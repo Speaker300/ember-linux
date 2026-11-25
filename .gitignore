@@ -41,3 +41,9 @@ __pycache__/
 # Local Calamares config backups
 configs/calamares.bak-*/
 *.bak-*
+
+# QA runtime artifacts (ISO snapshots, screenshots, caches)
+/qa/iso/
+/qa/runs/
+/qa/cache/
+/qa/work/
