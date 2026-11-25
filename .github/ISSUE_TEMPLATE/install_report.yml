@@ -1,0 +1,152 @@
+name: Install report
+description: Report a successful or failed install, especially on real hardware.
+title: "[install] "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Install reports are the most valuable contribution to Ember. A failure
+        with logs is better than a success without evidence.
+
+        This report may be published. Redact names, passwords, MAC addresses,
+        serial numbers, and anything else you do not want public.
+
+  - type: dropdown
+    id: result
+    attributes:
+      label: Result
+      options:
+        - Success — installed and booted
+        - Partial — installed, but the disk did not boot
+        - Failure — installer did not finish
+        - Live session only — installer did not complete
+    validations:
+      required: true
+
+  - type: input
+    id: iso
+    attributes:
+      label: ISO and SHA-256
+      placeholder: ember-live-amd64.iso, 4,260,958,208 bytes, 934806c8...
+    validations:
+      required: true
+
+  - type: input
+    id: hardware
+    attributes:
+      label: Machine
+      description: Vendor/model and firmware version, or QEMU/OVMF version and machine type.
+      placeholder: Dell XPS 13 9310, firmware 2.14.0 / QEMU 9.1 q35 + OVMF 4m
+    validations:
+      required: true
+
+  - type: textarea
+    id: specs
+    attributes:
+      label: Hardware details
+      description: CPU, GPU, storage controller/disk, network chipset, RAM.
+      placeholder: |
+        CPU: i7-1185G7
+        GPU: Intel Iris Xe
+        Disk: NVMe, Samsung PM9A1
+        Network: Intel AX201 Wi-Fi, no Ethernet
+        RAM: 16 GB
+    validations:
+      required: true
+
+  - type: dropdown
+    id: firmware
+    attributes:
+      label: Firmware mode
+      options:
+        - UEFI
+        - BIOS / legacy
+        - Not sure
+    validations:
+      required: true
+
+  - type: dropdown
+    id: secureboot
+    attributes:
+      label: Secure Boot state
+      options:
+        - Disabled
+        - Enabled
+        - Not sure
+    validations:
+      required: true
+
+  - type: dropdown
+    id: desktop
+    attributes:
+      label: Desktop selected
+      options:
+        - Openbox
+        - Xfce
+        - KDE Plasma
+        - Server (no desktop)
+    validations:
+      required: true
+
+  - type: input
+    id: filesystem
+    attributes:
+      label: Filesystem, swap, encryption, LVM
+      placeholder: ext4, no swap, no LUKS, no LVM
+    validations:
+      required: true
+
+  - type: input
+    id: stage3
+    attributes:
+      label: Stage 3 variant
+      placeholder: current-stage3-amd64-desktop-openrc (stage3-amd64-desktop-openrc-20261122T164601Z.tar.xz)
+    validations:
+      required: false
+
+  - type: textarea
+    id: timeline
+    attributes:
+      label: What worked and what failed
+      description: "Note each stage: live boot, stage3 download, desktop packages, partitioning, bootloader, finish, disk boot, login, network, audio, suspend."
+      placeholder: |
+        Live boot: pass, UEFI
+        Stage3: pass
+        Desktop packages: pass
+        Disk boot: GRUB starts, then...
+    validations:
+      required: true
+
+  - type: textarea
+    id: report
+    attributes:
+      label: Post-install report
+      description: Output of `cat /var/log/ember-install-report.txt` if the system booted.
+      render: shell
+    validations:
+      required: false
+
+  - type: textarea
+    id: logs
+    attributes:
+      label: Logs
+      description: Calamares session log, dmesg, Xorg log, `rc-status`, `lsblk -f`, `efibootmgr -v`.
+      render: shell
+    validations:
+      required: false
+
+  - type: textarea
+    id: screenshots
+    attributes:
+      label: Screenshots
+      description: Installer steps, firmware error screens, login, desktop. Remove personal data.
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: consent
+    attributes:
+      label: Publication
+      options:
+        - label: I am willing for this report to be summarized in the hardware or desktop matrix.
+          required: false

@@ -1,0 +1,83 @@
+name: Feature request
+description: Propose a capability, improvement, or documentation change.
+title: "[feature] "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Ember is installer-focused. The strongest proposals explain the problem
+        first, then the smallest change that solves it. "Support everything" is
+        not a scoped request.
+
+  - type: dropdown
+    id: area
+    attributes:
+      label: Area
+      options:
+        - Installer flow
+        - Partitioning / filesystems
+        - Desktop support
+        - Hardware support
+        - Secure Boot
+        - make.conf editor / hardware probing
+        - Branding / theme
+        - Documentation / website
+        - Build / release tooling
+        - Other
+    validations:
+      required: true
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: What problem does this solve?
+      description: Describe the user and the situation, not just the feature.
+      placeholder: A user with two disks cannot tell which one will be erased because...
+    validations:
+      required: true
+
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed solution
+      description: The smallest useful version. Include UI text or config changes if relevant.
+    validations:
+      required: true
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives considered
+    validations:
+      required: false
+
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Evidence or prior art
+      description: Links, screenshots, upstream documentation, or a prototype.
+    validations:
+      required: false
+
+  - type: dropdown
+    id: help
+    attributes:
+      label: Can you help test or implement it?
+      options:
+        - Yes, I can test it
+        - Yes, I can implement it
+        - Yes, both
+        - No, but I can provide feedback
+        - Not sure
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: preflight
+    attributes:
+      label: Preflight
+      options:
+        - label: I searched existing issues and the roadmap.
+          required: true
+        - label: This request does not ask the project to claim support without testing.
+          required: true

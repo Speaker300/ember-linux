@@ -1,0 +1,14 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Install guide
+    url: https://github.com/Speaker300/ember-linux/blob/main/docs/install.md
+    about: Walkthrough, requirements, and first boot.
+  - name: Troubleshooting
+    url: https://github.com/Speaker300/ember-linux/blob/main/docs/troubleshooting.md
+    about: Boot, network, installer, and GRUB problems.
+  - name: Status and evidence
+    url: https://github.com/Speaker300/ember-linux/blob/main/docs/testing.md
+    about: What is tested, what is offered, and what is experimental.
+  - name: Contributing
+    url: https://github.com/Speaker300/ember-linux/blob/main/.github/CONTRIBUTING.md
+    about: How to build, test, and submit changes.

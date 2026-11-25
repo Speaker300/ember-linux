@@ -1,0 +1,135 @@
+name: Bug report
+description: Report a problem in the live session, installer, or installed system.
+title: "[bug] "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for reporting a bug. Please include the exact ISO checksum and
+        firmware mode — many reports turn out to be a stale image or Secure Boot.
+
+        Do not paste passwords, private keys, MAC addresses, or serial numbers.
+        For security vulnerabilities, do not open a public issue; contact the
+        maintainers privately.
+
+  - type: checkboxes
+    id: preflight
+    attributes:
+      label: Preflight
+      options:
+        - label: I searched existing issues and did not find a duplicate.
+          required: true
+        - label: I tested the exact ISO whose checksum I provide below.
+          required: true
+        - label: I removed secrets and personal data from logs and screenshots.
+          required: true
+
+  - type: input
+    id: iso
+    attributes:
+      label: ISO and SHA-256
+      description: Filename, size, and checksum. If you built it locally, say so.
+      placeholder: ember-live-amd64.iso, 4,260,958,208 bytes, 934806c8...
+    validations:
+      required: true
+
+  - type: dropdown
+    id: firmware
+    attributes:
+      label: Firmware mode
+      options:
+        - UEFI
+        - BIOS / legacy
+        - Not sure
+    validations:
+      required: true
+
+  - type: dropdown
+    id: secureboot
+    attributes:
+      label: Secure Boot state
+      options:
+        - Disabled
+        - Enabled
+        - Not sure
+    validations:
+      required: true
+
+  - type: input
+    id: environment
+    attributes:
+      label: Machine or VM
+      description: Model and firmware version, or QEMU/OVMF version and machine type.
+      placeholder: ThinkPad T480, firmware 1.30 / QEMU 9.1 q35 + OVMF 4m
+    validations:
+      required: true
+
+  - type: dropdown
+    id: desktop
+    attributes:
+      label: Desktop selected
+      options:
+        - Openbox
+        - Xfce
+        - KDE Plasma
+        - Server (no desktop)
+        - Live session only
+        - Not applicable
+    validations:
+      required: true
+
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened?
+      description: The exact symptom, error text, and where it occurred.
+      placeholder: The installer stopped at the packages job with...
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: What did you expect?
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      description: Numbered steps from boot. Note the exact choices.
+      placeholder: |
+        1. Boot the ISO in UEFI mode.
+        2. Choose Stage 3 -> amd64 -> current-stage3...
+        3. ...
+    validations:
+      required: true
+
+  - type: textarea
+    id: logs
+    attributes:
+      label: Logs
+      description: |
+        Calamares session log: `/root/.cache/calamares/session.log`.
+        Installed system: `/var/log/ember-install-report.txt`, `dmesg`,
+        `/var/log/Xorg.0.log`, `rc-status default`.
+      render: shell
+    validations:
+      required: false
+
+  - type: textarea
+    id: screenshots
+    attributes:
+      label: Screenshots
+      description: Drag images here, or list paths. Remove personal data.
+    validations:
+      required: false
+
+  - type: textarea
+    id: context
+    attributes:
+      label: Anything else?
+      description: Hardware details, workarounds tried, whether the same media boots on another machine.
+    validations:
+      required: false
