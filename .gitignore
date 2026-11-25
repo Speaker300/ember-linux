@@ -26,6 +26,8 @@
 /logs/
 *.log
 .cache/
+/target-test/
+/vm/testkey/
 __pycache__/
 *.py[cod]
 *.retry
