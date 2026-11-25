@@ -1,0 +1,37 @@
+# Build trees, extracted rootfs, and temporary worktrees
+/build/
+/worktrees/
+/chroot/
+/out/
+
+# Release media and VM disks (never commit multi-GB artifacts)
+/images/*
+!/images/.gitkeep
+*.iso
+*.squashfs
+*.qcow2
+*.qcow
+*.img
+*.fd
+*.vdi
+*.vmdk
+
+# VM runtime state and screenshots
+/vm/*.pid
+/vm/*.qmp
+/vm/*.vnc
+/vm/shots/
+
+# Logs, caches, and local state
+/logs/
+*.log
+.cache/
+__pycache__/
+*.py[cod]
+*.retry
+
+# Secrets and local environment
+.env
+.env.*
+*.secret
+*.token
