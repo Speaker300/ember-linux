@@ -1,0 +1,16 @@
+Ember Linux
+Copyright (C) 2026 Ember Linux contributors
+
+Original source code is licensed under the GNU General Public License,
+version 3 or (at your option) any later version. See LICENSE.
+
+Branding assets under branding/ are licensed under Creative Commons
+Attribution-ShareAlike 4.0 International (CC-BY-SA-4.0) unless a file says
+otherwise. See branding/LICENSE.
+
+Documentation under docs/ is licensed under CC-BY-SA-4.0 unless a file says
+otherwise. See docs/LICENSE.
+
+Bundled third-party components (Gentoo packages, Calamares, the Linux kernel,
+firmware, fonts, and others) retain their own upstream licenses. This notice
+does not relicense them.

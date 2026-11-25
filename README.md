@@ -14,7 +14,7 @@
   <img alt="Base" src="https://img.shields.io/badge/base-Gentoo-54487A?style=flat-square">
   <img alt="Firmware" src="https://img.shields.io/badge/firmware-BIOS%20%7C%20UEFI-3FA796?style=flat-square">
   <img alt="Architecture" src="https://img.shields.io/badge/arch-amd64-A6AEBB?style=flat-square">
-  <img alt="License" src="https://img.shields.io/badge/license-TBD-A6AEBB?style=flat-square">
+  <img alt="License" src="https://img.shields.io/badge/license-GPL--3.0--or--later-A6AEBB?style=flat-square">
 </p>
 
 Ember Linux is an installer-focused distribution built on Gentoo. The live ISO
@@ -271,12 +271,11 @@ reproducer, or review the docs for claims that lack evidence.
 
 ## License
 
-The project's own source license is **not finalized**. That is a release
-blocker, not a detail: without a top-level license, others cannot legally
-reuse the project's original code. Bundled components keep their own licenses
-(GPL-3.0-or-later for the Calamares modules, CC-BY-SA-4.0 for most branding,
-OFL for the Inter font, and the licenses of Gentoo packages). See
-[docs/licensing.md](docs/licensing.md) for the audit and the checklist.
+Ember's original source is licensed under **GPL-3.0-or-later**. Branding assets
+are **CC-BY-SA-4.0**; documentation is **CC-BY-SA-4.0**. See [LICENSE](LICENSE),
+[NOTICE](NOTICE), and [docs/licensing.md](docs/licensing.md). Bundled
+third-party components keep their own licenses (Calamares modules, Gentoo
+packages, the Linux kernel, firmware, and the Inter font under the OFL).
 
 ## Acknowledgements
 
