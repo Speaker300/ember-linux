@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48" height="48">
+  <title>system-file-manager</title>
+  <g stroke-linecap="round" stroke-linejoin="round">
+      <path d="M8 15 C8 12.8 9.8 11 12 11 H20 L24 15 H36 C38.2 15 40 16.8 40 19 V34 C40 36.2 38.2 38 36 38 H12 C9.8 38 8 36.2 8 34 Z"
+            fill="none" stroke="#FFB35C" stroke-width="2.4" stroke-linejoin="round"/>
+      <path d="M8 21 H40" stroke="#F26A3D" stroke-width="2.2"/>
+      <path d="M17 28 H31" stroke="#A6AEBB" stroke-width="1.8" stroke-linecap="round"/>
+    </g>
+</svg>

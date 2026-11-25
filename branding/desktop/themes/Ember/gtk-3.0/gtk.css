@@ -1,0 +1,310 @@
+/*
+ * Ember Linux — GTK 3 theme
+ * SPDX-License-Identifier: CC-BY-SA-4.0
+ *
+ * Built on Adwaita's dark stylesheet so every widget keeps working, then
+ * recoloured with the Ember palette. Adwaita is part of GTK itself, so this
+ * import is available on any system that can run a GTK 3 application.
+ */
+@import url("resource:///org/gtk/libgtk/theme/Adwaita/gtk-contained-dark.css");
+
+@define-color theme_bg_color #14171C;
+@define-color theme_fg_color #F4F6F8;
+@define-color theme_base_color #1B2027;
+@define-color theme_text_color #F4F6F8;
+@define-color theme_selected_bg_color #F26A3D;
+@define-color theme_selected_fg_color #14171C;
+@define-color insensitive_bg_color #191E24;
+@define-color insensitive_fg_color #6C7684;
+@define-color borders #2A313B;
+@define-color unfocused_borders #222831;
+@define-color warning_color #E0A526;
+@define-color error_color #E5484D;
+@define-color success_color #4CAF6E;
+@define-color accent_color #F26A3D;
+@define-color accent_bg_color #F26A3D;
+@define-color accent_fg_color #14171C;
+
+headerbar,
+.titlebar {
+    background-image: none;
+    background-color: #1B2027;
+    border-bottom: 1px solid #2A313B;
+    box-shadow: none;
+}
+
+headerbar:backdrop,
+.titlebar:backdrop {
+    background-color: #171B21;
+    color: #77808E;
+}
+
+button {
+    border-radius: 7px;
+}
+
+entry,
+spinbutton {
+    border-radius: 7px;
+}
+
+menubar,
+.menubar {
+    background-color: #1B2027;
+    color: #A6AEBB;
+}
+
+menu,
+.menu,
+.context-menu {
+    background-color: #1B2027;
+    border: 1px solid #3A434F;
+}
+
+menuitem:hover,
+menu menuitem:hover {
+    background-color: #F26A3D;
+    color: #14171C;
+}
+
+tooltip {
+    background-color: #232A33;
+    color: #F4F6F8;
+    border: 1px solid #3A434F;
+}
+
+selection,
+*:selected {
+    background-color: #F26A3D;
+    color: #14171C;
+}
+
+/* -------------------------------------------------------------------------
+ * Explicit widget overrides. Adwaita resolves some named colours while its
+ * stylesheet is parsed, so the most important surfaces are set directly here
+ * as well. This keeps the theme readable even on older GTK 3 releases.
+ */
+
+window,
+.background {
+    background-color: #14171C;
+    color: #C3CAD5;
+}
+
+headerbar,
+.titlebar {
+    background-image: none;
+    background-color: #1B2027;
+    border-bottom: 1px solid #2A313B;
+    box-shadow: none;
+    color: #F4F6F8;
+}
+
+headerbar label,
+.titlebar label,
+label.title,
+.title {
+    color: #F4F6F8;
+}
+
+label {
+    color: #C3CAD5;
+}
+
+button {
+    background-image: none;
+    background-color: #232A33;
+    color: #F4F6F8;
+    border: 1px solid #3A434F;
+    border-radius: 7px;
+    box-shadow: none;
+    text-shadow: none;
+}
+
+button:hover {
+    background-color: #2C3541;
+    border-color: #66707F;
+}
+
+button:active,
+button:checked {
+    background-color: #1A2028;
+    border-color: #F26A3D;
+}
+
+button:disabled {
+    background-color: #1A1F26;
+    color: #6C7684;
+    border-color: #2A313B;
+}
+
+button.suggested-action {
+    background-color: #F26A3D;
+    color: #14171C;
+    border-color: #F26A3D;
+    font-weight: 600;
+}
+
+button.suggested-action:hover {
+    background-color: #FF8055;
+    border-color: #FF8055;
+}
+
+button.suggested-action:active {
+    background-color: #D8432A;
+    border-color: #D8432A;
+}
+
+button.destructive-action {
+    background-color: #E5484D;
+    color: #FFFFFF;
+    border-color: #E5484D;
+}
+
+button.destructive-action:hover {
+    background-color: #F05A5F;
+    border-color: #F05A5F;
+}
+
+entry,
+spinbutton {
+    background-image: none;
+    background-color: #1B2027;
+    color: #F4F6F8;
+    border: 1px solid #3A434F;
+    border-radius: 7px;
+    box-shadow: none;
+}
+
+entry:focus,
+spinbutton:focus {
+    border-color: #FFB35C;
+}
+
+entry selection,
+textview selection,
+*:selected {
+    background-color: #F26A3D;
+    color: #14171C;
+}
+
+menu,
+.menu,
+.context-menu,
+popover,
+popover.background {
+    background-color: #1B2027;
+    color: #F4F6F8;
+    border: 1px solid #3A434F;
+}
+
+menuitem:hover,
+menu menuitem:hover,
+popover modelbutton:hover {
+    background-color: #F26A3D;
+    color: #14171C;
+}
+
+tooltip,
+tooltip.background {
+    background-color: #232A33;
+    color: #F4F6F8;
+    border: 1px solid #3A434F;
+}
+
+switch {
+    background-color: #1B2027;
+    border: 1px solid #3A434F;
+    border-radius: 999px;
+}
+
+switch:checked {
+    background-color: #F26A3D;
+    border-color: #F26A3D;
+}
+
+switch slider {
+    background-color: #F4F6F8;
+    border: 1px solid #14171C;
+    border-radius: 999px;
+}
+
+progressbar trough {
+    background-color: #1B2027;
+    border: 1px solid #2A313B;
+    border-radius: 5px;
+}
+
+progressbar progress {
+    background-color: #F26A3D;
+    border-radius: 5px;
+}
+
+scale highlight {
+    background-color: #F26A3D;
+}
+
+scale slider {
+    background-color: #F4F6F8;
+    border: 1px solid #14171C;
+}
+
+checkbutton check:checked,
+radiobutton radio:checked {
+    background-color: #F26A3D;
+    border-color: #F26A3D;
+    color: #14171C;
+}
+
+listbox row:selected,
+treeview.view:selected,
+iconview:selected {
+    background-color: #F26A3D;
+    color: #14171C;
+}
+
+scrollbar slider {
+    background-color: #3A424E;
+    border-radius: 5px;
+}
+
+scrollbar slider:hover {
+    background-color: #4B5563;
+}
+
+/* Adwaita paints suggested/destructive buttons with gradients; clear the
+ * image as well as the colour so the flat Ember accent wins. */
+button.suggested-action,
+button.suggested-action:not(:disabled) {
+    background-image: none;
+    background-color: #F26A3D;
+    color: #14171C;
+    border-color: #F26A3D;
+}
+
+button.suggested-action:hover,
+button.suggested-action:not(:disabled):hover {
+    background-image: none;
+    background-color: #FF8055;
+    border-color: #FF8055;
+}
+
+button.suggested-action:active,
+button.suggested-action:not(:disabled):active {
+    background-image: none;
+    background-color: #D8432A;
+    border-color: #D8432A;
+}
+
+selection,
+label selection,
+textview selection,
+entry selection {
+    background-color: #F26A3D;
+    color: #14171C;
+}
+
+headerbar .subtitle,
+.titlebar .subtitle {
+    color: #A6AEBB;
+}

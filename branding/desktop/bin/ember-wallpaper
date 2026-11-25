@@ -1,0 +1,61 @@
+#!/bin/sh
+# Ember Linux — set the desktop wallpaper
+# SPDX-License-Identifier: MIT
+#
+# Uses the first available wallpaper setter. Falls back to the Ember ink colour
+# so the session always looks intentional, even on a machine with no
+# compositor or image tools.
+
+set -u
+
+DIR="/usr/share/backgrounds/ember"
+DEFAULT="ember-ridge"
+
+choose_suffix() {
+    width="$(xdpyinfo 2>/dev/null | awk '/dimensions:/{print $2; exit}' | cut -dx -f1)"
+    case "${width:-0}" in
+        ''|*[!0-9]*) echo "1920x1080" ;;
+        *) if [ "$width" -ge 2200 ]; then echo "2560x1440"; else echo "1920x1080"; fi ;;
+    esac
+}
+
+name="${EMBER_WALLPAPER:-$DEFAULT}"
+suffix="$(choose_suffix)"
+
+case "${1:-}" in
+    --list)
+        for f in "$DIR"/*-"$suffix".png; do [ -e "$f" ] && basename "$f" "-$suffix.png"; done
+        exit 0
+        ;;
+    --set)
+        [ $# -ge 2 ] || { echo "usage: ember-wallpaper [--set NAME|--list]" >&2; exit 2; }
+        name="$2"
+        ;;
+esac
+
+wall="$DIR/${name}-${suffix}.png"
+[ -r "$wall" ] || wall="$DIR/${DEFAULT}-${suffix}.png"
+[ -r "$wall" ] || wall="$DIR/${DEFAULT}-1920x1080.png"
+
+if [ -r "$wall" ]; then
+    if command -v feh >/dev/null 2>&1; then
+        feh --no-fehbg --bg-fill "$wall" >/dev/null 2>&1 && exit 0
+    fi
+    if command -v hsetroot >/dev/null 2>&1; then
+        hsetroot -fill "$wall" >/dev/null 2>&1 && exit 0
+    fi
+    if command -v xwallpaper >/dev/null 2>&1; then
+        xwallpaper --zoom "$wall" >/dev/null 2>&1 && exit 0
+    fi
+    if command -v nitrogen >/dev/null 2>&1; then
+        nitrogen --set-zoom-fill --save "$wall" >/dev/null 2>&1 && exit 0
+    fi
+    if command -v display >/dev/null 2>&1; then
+        display -window root "$wall" >/dev/null 2>&1 &
+        exit 0
+    fi
+fi
+
+if command -v xsetroot >/dev/null 2>&1; then
+    xsetroot -solid '#14171C'
+fi

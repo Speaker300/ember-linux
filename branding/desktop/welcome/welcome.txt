@@ -1,0 +1,67 @@
+WELCOME TO EMBER LINUX 1.0 "CINDER"
+===================================
+
+Ember is a desktop distribution built on Gentoo. This text is the fallback
+version of the Welcome page; the graphical version is at:
+
+    /usr/share/ember/welcome/index.html
+
+FIRST STEPS
+-----------
+Update the system:
+    sudo emaint sync -a
+    sudo emerge --ask --update --deep --newuse @world
+
+Read Portage news before a large update:
+    eselect news read
+
+Install software:
+    emerge --search firefox
+    sudo emerge --ask www-client/firefox
+
+Network:
+    nmtui                 # text interface
+    nmcli device status   # check status
+    ping -c 3 gentoo.org  # verify connectivity
+
+Services (OpenRC):
+    sudo rc-update add NetworkManager default
+    sudo rc-service NetworkManager start
+
+DESKTOP SHORTCUTS
+-----------------
+    Super+Enter        terminal
+    Super+D            application finder (rofi)
+    Super+E            file manager
+    Super+B            web browser
+    Super+W            welcome page
+    Alt+Tab            cycle windows
+    Alt+F4             close window
+    Super+1..4         switch workspace
+    Super+Shift+1..4   move window to workspace
+    Super+Left/Right   snap window to half
+    Super+Up           maximise
+    Super+Down         unmaximise
+
+The panel is tint2. Right-click the desktop for the full menu. The four
+workspaces are named Main, Web, Work and Media.
+
+HELP
+----
+Installer log: shown on the installer's error page; copy it before closing
+the live session.
+
+Text console: Ctrl+Alt+F2. Return to the desktop with Ctrl+Alt+F7.
+
+Boot menu: hold Shift on BIOS, press Esc on UEFI, while the machine boots.
+
+Package logs: /var/log/emerge.log; system report: emerge --info.
+
+Gentoo Handbook: https://wiki.gentoo.org/wiki/Handbook:AMD64
+Ember help:      https://emberlinux.org/help/
+
+Ember Linux is an independent project built on Gentoo. Gentoo is a trademark
+of the Gentoo Foundation. Ember is not affiliated with or endorsed by the
+Gentoo Foundation.
+
+Artwork and documentation: CC BY-SA 4.0.

@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=X-GNOME-Metatheme
+Name=Ember
+Comment=Ember Linux — a calm, dark GTK theme with a warm accent
+Encoding=UTF-8
+
+[X-GNOME-Metatheme]
+GtkTheme=Ember
+IconTheme=Ember
+CursorTheme=Ember
+Font=Inter 10

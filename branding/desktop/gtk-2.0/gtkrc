@@ -1,0 +1,36 @@
+# Ember Linux — GTK 2 fallback
+# SPDX-License-Identifier: CC-BY-SA-4.0
+#
+# GTK 2 cannot read the GTK 3 CSS, so this only sets the matching fonts,
+# icons and base colours. Adwaita is used when the distribution ships it.
+
+gtk-theme-name = "Adwaita"
+gtk-icon-theme-name = "Ember"
+gtk-font-name = "Inter 10"
+gtk-cursor-theme-name = "Ember"
+gtk-cursor-theme-size = 24
+
+style "ember-default" {
+  bg[NORMAL]      = "#14171C"
+  bg[PRELIGHT]    = "#232A33"
+  bg[ACTIVE]      = "#1B2027"
+  bg[SELECTED]    = "#F26A3D"
+  bg[INSENSITIVE] = "#191E24"
+  fg[NORMAL]      = "#F4F6F8"
+  fg[PRELIGHT]    = "#F4F6F8"
+  fg[ACTIVE]      = "#F4F6F8"
+  fg[SELECTED]    = "#14171C"
+  fg[INSENSITIVE] = "#6C7684"
+  base[NORMAL]    = "#1B2027"
+  base[PRELIGHT]  = "#232A33"
+  base[ACTIVE]    = "#F26A3D"
+  base[SELECTED]  = "#F26A3D"
+  base[INSENSITIVE] = "#191E24"
+  text[NORMAL]    = "#F4F6F8"
+  text[PRELIGHT]  = "#F4F6F8"
+  text[ACTIVE]    = "#14171C"
+  text[SELECTED]  = "#14171C"
+  text[INSENSITIVE] = "#6C7684"
+}
+
+class "GtkWidget" style "ember-default"

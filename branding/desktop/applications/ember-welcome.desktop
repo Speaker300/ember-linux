@@ -1,0 +1,13 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=Welcome to Ember
+GenericName=Getting Started
+Comment=Set up Ember Linux: updates, software, desktop shortcuts and help
+Exec=ember-welcome
+TryExec=ember-welcome
+Icon=ember-welcome
+Terminal=false
+Categories=System;Documentation;
+Keywords=welcome;start;help;guide;ember;
+StartupNotify=true

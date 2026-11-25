@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=X-GNOME-Metatheme
+Name=Ember Greeter
+Comment=Ember Linux login screen
+Encoding=UTF-8
+
+[X-GNOME-Metatheme]
+GtkTheme=Ember-Greeter
+IconTheme=Ember
+CursorTheme=Ember
+Font=Inter 11

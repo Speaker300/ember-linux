@@ -1,0 +1,16 @@
+/* Ember Linux 1.0 palette — CC BY-SA 4.0 */
+:root {
+  --ember-ink: #14171C;
+  --ember-basalt: #1B2027;
+  --ember-graphite: #262C36;
+  --ember-ash: #A6AEBB;
+  --ember-frost: #F4F6F8;
+  --ember-ember: #F26A3D;
+  --ember-ember-deep: #D8432A;
+  --ember-amber: #FFB35C;
+  --ember-sand: #FFD9A0;
+  --ember-teal: #3FA796;
+  --ember-success: #4CAF6E;
+  --ember-warning: #E0A526;
+  --ember-danger: #E5484D;
+}

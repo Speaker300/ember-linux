@@ -1,0 +1,43 @@
+#!/bin/sh
+# Ember Linux — Openbox session autostart
+# SPDX-License-Identifier: CC-BY-SA-4.0
+
+# A dark root colour first, so there is never a white flash while tools start.
+command -v xsetroot >/dev/null 2>&1 && xsetroot -solid '#14171C'
+
+# Wallpaper (feh/hsetroot/xwallpaper/ImageMagick, with an xsetroot fallback).
+if command -v ember-wallpaper >/dev/null 2>&1; then
+    ember-wallpaper >/dev/null 2>&1 &
+fi
+
+# Panel.
+if command -v tint2 >/dev/null 2>&1; then
+    if [ -r "${XDG_CONFIG_HOME:-$HOME/.config}/tint2/tint2rc" ]; then
+        tint2 >/dev/null 2>&1 &
+    elif [ -r /etc/xdg/tint2/tint2rc ]; then
+        tint2 -c /etc/xdg/tint2/tint2rc >/dev/null 2>&1 &
+    else
+        tint2 >/dev/null 2>&1 &
+    fi
+fi
+
+# Compositor. xrender is the safest backend on old and virtual GPUs; picom
+# exits quietly if the display cannot support it.
+if command -v picom >/dev/null 2>&1; then
+    picom --backend xrender >/dev/null 2>&1 &
+fi
+
+# Network tray icon.
+if command -v nm-applet >/dev/null 2>&1; then
+    nm-applet --indicator >/dev/null 2>&1 &
+fi
+
+# Keyboard layout / accessibility trays are optional; start them only if present.
+if command -v fcitx5 >/dev/null 2>&1; then
+    fcitx5 -d >/dev/null 2>&1 &
+fi
+
+# NumLock where available (harmless if unsupported).
+if command -v numlockx >/dev/null 2>&1; then
+    numlockx on >/dev/null 2>&1 &
+fi

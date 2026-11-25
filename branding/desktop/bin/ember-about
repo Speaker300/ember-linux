@@ -1,0 +1,102 @@
+#!/bin/sh
+# Ember Linux — About this system
+# SPDX-License-Identifier: MIT
+
+set -u
+
+os_name="Ember Linux"
+os_version="1.0 (Cinder)"
+if [ -r /etc/os-release ]; then
+    # shellcheck disable=SC1091
+    . /etc/os-release
+    [ -n "${PRETTY_NAME:-}" ] && os_name="$PRETTY_NAME"
+fi
+
+kernel="$(uname -r 2>/dev/null || echo unknown)"
+machine="$(uname -m 2>/dev/null || echo unknown)"
+host="$(uname -n 2>/dev/null || echo unknown)"
+desktop="${XDG_CURRENT_DESKTOP:-${DESKTOP_SESSION:-Openbox}}"
+memory="$(awk '/^MemTotal:/{printf "%.1f GiB", $2/1048576}' /proc/meminfo 2>/dev/null || echo unknown)"
+disk="$(df -h / 2>/dev/null | awk 'NR==2{print $3 " used of " $2 " (" $5 ")"}')"
+uptime_text="$(uptime -p 2>/dev/null | sed 's/^up //')"
+
+text="Ember Linux 1.0 \"Cinder\"
+
+A Gentoo-based desktop distribution.
+Desktop:  ${desktop}
+Kernel:   ${kernel} (${machine})
+Host:     ${host}
+Memory:   ${memory}
+Disk:     ${disk:-unknown}
+Uptime:   ${uptime_text:-unknown}
+
+Portage:  emerge --info
+Release:  https://emberlinux.org/releases/1.0/
+Help:     https://emberlinux.org/help/
+
+Ember is an independent project built on Gentoo.
+Gentoo is a trademark of the Gentoo Foundation. Ember is not affiliated with
+or endorsed by the Gentoo Foundation.
+
+Artwork and documentation are licensed CC BY-SA 4.0."
+
+case "${1:-}" in
+    --text)
+        printf '%s\n' "$text"
+        exit 0
+        ;;
+    --version)
+        echo "Ember Linux 1.0 (Cinder)"
+        exit 0
+        ;;
+esac
+
+if [ -n "${DISPLAY:-}${WAYLAND_DISPLAY:-}" ]; then
+    if command -v zenity >/dev/null 2>&1; then
+        zenity --info --title="About Ember Linux" \
+               --window-icon="/usr/share/icons/Ember/128x128/apps/ember-about.png" \
+               --width=480 --text="$text" 2>/dev/null
+        exit $?
+    fi
+    if command -v kdialog >/dev/null 2>&1; then
+        kdialog --title "About Ember Linux" --msgbox "$text" 2>/dev/null
+        exit $?
+    fi
+    if command -v yad >/dev/null 2>&1; then
+        yad --title="About Ember Linux" --text="$text" --width=480 \
+            --image="/usr/share/icons/Ember/128x128/apps/ember-about.png" --button=Close:0 2>/dev/null
+        exit $?
+    fi
+
+    cache="${XDG_CACHE_HOME:-$HOME/.cache}/ember"
+    mkdir -p "$cache" 2>/dev/null || cache="/tmp"
+    out="$cache/about.html"
+    {
+        printf '<!DOCTYPE html><html><head><meta charset="utf-8"><title>About Ember Linux</title>'
+        printf '<style>body{background:#14171C;color:#C3CAD5;font:15px/1.6 Inter,sans-serif;max-width:620px;margin:48px auto;padding:0 24px}'
+        printf 'img{width:88px;border-radius:22px}h1{color:#F4F6F8;font-size:30px;margin:18px 0 4px}'
+        printf 'pre{background:#1B2027;border:1px solid #2A313B;border-radius:10px;padding:18px;color:#F4F6F8;white-space:pre-wrap}'
+        printf 'a{color:#FFB35C}.dim{color:#A6AEBB;font-size:12px}</style></head><body>'
+        printf '<img src="file:///usr/share/ember/welcome/logo.png" alt="Ember Linux">'
+        printf '<h1>About this system</h1><pre>%s</pre>' "$text"
+        printf '<p class="dim">Ember Linux 1.0 · Gentoo-based · <a href="https://emberlinux.org/">emberlinux.org</a></p>'
+        printf '</body></html>'
+    } > "$out" 2>/dev/null
+
+    for browser in firefox firefox-bin chromium chromium-browser epiphany midori; do
+        if command -v "$browser" >/dev/null 2>&1; then
+            "$browser" "file://$out" >/dev/null 2>&1 &
+            exit 0
+        fi
+    done
+    if command -v xdg-open >/dev/null 2>&1; then
+        xdg-open "file://$out" >/dev/null 2>&1 &
+        exit 0
+    fi
+    if command -v xmessage >/dev/null 2>&1; then
+        xmessage -center -title "About Ember Linux" "$text" 2>/dev/null
+        exit $?
+    fi
+fi
+
+printf '%s\n' "$text"

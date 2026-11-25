@@ -1,0 +1,125 @@
+# Ember Linux — tint2 panel
+# SPDX-License-Identifier: CC-BY-SA-4.0
+# A 34 px slate bar, ember selection, and no decoration beyond a hairline.
+
+# --------------------------------------------------------------- backgrounds
+rounded = 0
+border_width = 1
+border_sides = T
+background_color = #14171C 96
+border_color = #2A313B 100
+
+# Background 2: active task
+rounded = 7
+border_width = 1
+border_sides = TBLR
+background_color = #F26A3D 16
+border_color = #F26A3D 42
+background_color_hover = #F26A3D 24
+border_color_hover = #F26A3D 60
+
+# Background 3: iconified task
+rounded = 7
+border_width = 1
+border_sides = TBLR
+background_color = #1B2027 55
+border_color = #3A434F 40
+
+# Background 4: urgent task
+rounded = 7
+border_width = 1
+border_sides = TBLR
+background_color = #E5484D 72
+border_color = #E5484D 90
+
+# Background 5: tooltip
+rounded = 7
+border_width = 1
+border_sides = TBLR
+background_color = #1B2027 100
+border_color = #3A434F 100
+
+# --------------------------------------------------------------------- panel
+panel_items = LTSC
+panel_size = 100% 34
+panel_margin = 0 0
+panel_padding = 6 0 6
+panel_background_id = 1
+wm_menu = 1
+panel_dock = 0
+panel_position = bottom center horizontal
+panel_layer = top
+panel_monitor = all
+panel_shrink = 0
+autohide = 0
+autohide_show_timeout = 0
+autohide_hide_timeout = 0.2
+autohide_height = 2
+strut_policy = follow_size
+panel_window_name = Ember Panel
+disable_transparency = 1
+
+# ------------------------------------------------------------------ launcher
+launcher_padding = 4 0 4
+launcher_background_id = 0
+launcher_icon_size = 20
+launcher_icon_theme = Ember
+launcher_item_app = ember-welcome.desktop
+launcher_item_app = firefox.desktop
+launcher_item_app = thunar.desktop
+launcher_item_app = xterm.desktop
+
+# ------------------------------------------------------------------- taskbar
+taskbar_mode = single_desktop
+taskbar_padding = 2 3 2
+taskbar_background_id = 0
+taskbar_name = 0
+taskbar_name_padding = 0
+taskbar_name_background_id = 0
+taskbar_name_font = Inter 9
+taskbar_name_font_color = #A6AEBB 100
+taskbar_name_active_font_color = #F4F6F8 100
+taskbar_distribute_size = 1
+task_icon = 1
+task_text = 1
+task_centered = 1
+task_maximum_size = 220 32
+task_padding = 6 6 2
+task_font = Inter 9
+task_font_color = #C3CAD5 100
+task_active_font_color = #F4F6F8 100
+task_icon_asb = 100 0 0
+task_background_id = 0
+task_active_background_id = 2
+task_urgent_background_id = 4
+task_iconified_background_id = 3
+
+# ------------------------------------------------------------------- systray
+systray_padding = 4 2 4
+systray_background_id = 0
+systray_icon_size = 18
+systray_icon_asb = 100 0 0
+systray_monitor = 1
+
+# --------------------------------------------------------------------- clock
+time1_format = %H:%M
+time1_font = Inter 10
+time2_format = %a %d %b
+time2_font = Inter 8
+clock_font_color = #F4F6F8 100
+clock_padding = 10 2
+clock_background_id = 0
+
+# ------------------------------------------------------------------ tooltip
+tooltip_show_timeout = 0.4
+tooltip_hide_timeout = 8
+tooltip_padding = 7 4
+tooltip_background_id = 5
+tooltip_font = Inter 9
+tooltip_font_color = #F4F6F8 100
+
+# -------------------------------------------------------------------- mouse
+mouse_middle = none
+mouse_right = close
+mouse_scroll_up = toggle
+mouse_scroll_down = iconify

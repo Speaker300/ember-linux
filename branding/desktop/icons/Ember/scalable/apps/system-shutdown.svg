@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48" height="48">
+  <title>system-shutdown</title>
+  <g stroke-linecap="round" stroke-linejoin="round">
+      <path d="M24 9 V24" stroke="#F26A3D" stroke-width="3" stroke-linecap="round"/>
+      <path d="M15.5 15.5 C11 20 11.5 29 16.5 33.5 C21.5 38 29.5 37.5 34 32.5 C38 28 38 21 34 16.5"
+            fill="none" stroke="#FFB35C" stroke-width="2.6" stroke-linecap="round"/>
+    </g>
+</svg>

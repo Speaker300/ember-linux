@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48" height="48">
+  <title>text-editor</title>
+  <g stroke-linecap="round" stroke-linejoin="round">
+      <path d="M12 8 H29 L37 16 V38 C37 39.7 35.7 41 34 41 H12 C10.3 41 9 39.7 9 38 V11 C9 9.3 10.3 8 12 8 Z"
+            fill="none" stroke="#A6AEBB" stroke-width="2.2" stroke-linejoin="round"/>
+      <path d="M29 8 V16 H37" fill="none" stroke="#A6AEBB" stroke-width="2.2" stroke-linejoin="round"/>
+      <path d="M15 24 H31 M15 30 H27" stroke="#F26A3D" stroke-width="2" stroke-linecap="round"/>
+    </g>
+</svg>

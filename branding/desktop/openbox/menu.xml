@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Ember Linux — Openbox root menu
+  SPDX-License-Identifier: CC-BY-SA-4.0
+-->
+<openbox_menu xmlns="http://openbox.org/3.4/menu">
+
+  <menu id="root-menu" label="Ember Linux">
+    <item label="Welcome to Ember">
+      <action name="Execute">
+        <command>ember-welcome</command>
+        <startupnotify><enabled>yes</enabled></startupnotify>
+      </action>
+    </item>
+    <separator/>
+
+    <item label="Web Browser" icon="/usr/share/icons/Ember/48x48/apps/web-browser.png">
+      <action name="Execute">
+        <command>firefox</command>
+        <startupnotify><enabled>yes</enabled></startupnotify>
+      </action>
+    </item>
+    <item label="File Manager" icon="/usr/share/icons/Ember/48x48/apps/system-file-manager.png">
+      <action name="Execute">
+        <command>thunar</command>
+        <startupnotify><enabled>yes</enabled></startupnotify>
+      </action>
+    </item>
+    <item label="Terminal" icon="/usr/share/icons/Ember/48x48/apps/utilities-terminal.png">
+      <action name="Execute">
+        <command>xterm</command>
+        <startupnotify><enabled>yes</enabled></startupnotify>
+      </action>
+    </item>
+    <separator/>
+
+    <menu id="applications-menu" label="Applications" icon="/usr/share/icons/Ember/48x48/apps/applications-system.png">
+      <item label="Run a Command…" icon="/usr/share/icons/Ember/48x48/apps/system-search.png">
+        <action name="Execute">
+          <command>rofi -show run</command>
+          <startupnotify><enabled>yes</enabled></startupnotify>
+        </action>
+      </item>
+      <item label="Application Finder" icon="/usr/share/icons/Ember/48x48/apps/system-search.png">
+        <action name="Execute">
+          <command>rofi -show drun</command>
+          <startupnotify><enabled>yes</enabled></startupnotify>
+        </action>
+      </item>
+      <separator/>
+      <item label="Volume Control" icon="/usr/share/icons/Ember/48x48/apps/multimedia-volume-control.png">
+        <action name="Execute">
+          <command>pavucontrol</command>
+          <startupnotify><enabled>yes</enabled></startupnotify>
+        </action>
+      </item>
+      <item label="Network Connections" icon="/usr/share/icons/Ember/48x48/apps/network-wireless.png">
+        <action name="Execute">
+          <command>nm-applet</command>
+          <startupnotify><enabled>yes</enabled></startupnotify>
+        </action>
+      </item>
+      <item label="Settings" icon="/usr/share/icons/Ember/48x48/apps/preferences-system.png">
+        <action name="Execute">
+          <command>lxappearance</command>
+          <startupnotify><enabled>yes</enabled></startupnotify>
+        </action>
+      </item>
+    </menu>
+
+    <menu id="ember-menu" label="Ember" icon="/usr/share/icons/Ember/48x48/apps/ember-welcome.png">
+      <item label="About Ember" icon="/usr/share/icons/Ember/48x48/apps/help-about.png">
+        <action name="Execute">
+          <command>ember-about</command>
+          <startupnotify><enabled>yes</enabled></startupnotify>
+        </action>
+      </item>
+      <item label="Installer Help" icon="/usr/share/icons/Ember/48x48/apps/help-browser.png">
+        <action name="Execute">
+          <command>ember-welcome --help</command>
+          <startupnotify><enabled>yes</enabled></startupnotify>
+        </action>
+      </item>
+    </menu>
+
+    <separator/>
+    <item label="Reconfigure Openbox">
+      <action name="Reconfigure"/>
+    </item>
+    <item label="Restart Openbox">
+      <action name="Restart"/>
+    </item>
+    <item label="Log Out">
+      <action name="Exit">
+        <prompt>yes</prompt>
+      </action>
+    </item>
+  </menu>
+
+</openbox_menu>

@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48" height="48">
+  <title>web-browser</title>
+  <g stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="24" cy="24" r="14" fill="none" stroke="#F26A3D" stroke-width="2.4"/>
+      <ellipse cx="24" cy="24" rx="6.5" ry="14" fill="none" stroke="#FFB35C" stroke-width="1.7"/>
+      <path d="M10.5 19 H37.5 M10.5 29 H37.5" stroke="#A6AEBB" stroke-width="1.7"/>
+      <circle cx="33" cy="14" r="3.2" fill="#FFB35C"/>
+    </g>
+</svg>

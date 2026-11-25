@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="dark">
+<title>About Ember Linux</title>
+<style>
+  :root{--ink:#14171c;--basalt:#1b2027;--line:#2a313b;--ash:#a6aebb;--frost:#f4f6f8;--ember:#f26a3d;--amber:#ffb35c}
+  *{box-sizing:border-box}
+  body{margin:0;background:radial-gradient(700px 460px at 80% 0%,rgba(242,106,61,.14),transparent 65%),var(--ink);
+       color:var(--ash);font:15px/1.65 Inter,"Noto Sans",system-ui,sans-serif}
+  .wrap{max-width:720px;margin:0 auto;padding:64px 28px}
+  img{width:96px;height:96px;border-radius:24px;box-shadow:0 18px 40px rgba(0,0,0,.35)}
+  h1{color:var(--frost);font-size:34px;letter-spacing:-.8px;margin:24px 0 4px}
+  .sub{color:var(--amber);font-size:11px;letter-spacing:2.4px;text-transform:uppercase}
+  .card{margin-top:28px;background:var(--basalt);border:1px solid var(--line);border-radius:14px;padding:24px}
+  dt{color:var(--frost);font-weight:600;margin-top:12px}
+  dt:first-child{margin-top:0}
+  dd{margin:2px 0 0}
+  code{font-family:"JetBrains Mono","Hack",monospace;color:var(--frost);background:#101419;border:1px solid var(--line);
+       border-radius:5px;padding:1px 6px;font-size:12.5px}
+  a{color:var(--amber);text-decoration:none} a:hover{text-decoration:underline}
+  footer{margin-top:30px;font-size:12px;color:#7d8593}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <img src="logo.png" alt="Ember Linux">
+  <div class="sub" style="margin-top:24px">Ember Linux</div>
+  <h1>About this system</h1>
+  <p>A calm, Gentoo-based desktop distribution. Ember provides the installer, the desktop
+  defaults and a coherent visual identity; Portage provides the packages and Gentoo provides
+  the foundation.</p>
+
+  <div class="card">
+    <dl>
+      <dt>Release</dt><dd>Ember Linux 1.0 “Cinder”</dd>
+      <dt>Base</dt><dd>Gentoo Linux (stage3, OpenRC)</dd>
+      <dt>Desktop</dt><dd>The desktop selected during installation — Openbox by default, with tint2, rofi and picom</dd>
+      <dt>Package manager</dt><dd>Portage — <code>emerge</code>, <code>emaint</code>, <code>eselect</code></dd>
+      <dt>Init system</dt><dd>OpenRC</dd>
+      <dt>Live details</dt><dd>Run <code>uname -a</code>, <code>emerge --info</code> or open
+      <code>/etc/os-release</code> in a terminal.</dd>
+    </dl>
+  </div>
+
+  <div class="card">
+    <p><strong style="color:var(--frost)">Licence.</strong> Ember's original artwork and
+    documentation are licensed CC BY-SA 4.0. The software installed on this system keeps its
+    own licences; Gentoo's package metadata records them.</p>
+    <p><strong style="color:var(--frost)">Gentoo.</strong> Gentoo is a trademark of the Gentoo
+    Foundation. Ember Linux is an independent project and is not affiliated with or endorsed by
+    the Gentoo Foundation.</p>
+    <p><a href="https://emberlinux.org/">emberlinux.org</a> ·
+       <a href="https://emberlinux.org/help/">Help</a> ·
+       <a href="https://wiki.gentoo.org/wiki/Handbook:AMD64">Gentoo Handbook</a></p>
+  </div>
+
+  <footer>Ember Linux 1.0 · Built with care, not with stock defaults.</footer>
+</div>
+</body>
+</html>

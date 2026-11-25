@@ -1,0 +1,101 @@
+!# Ember — Openbox window theme
+!# SPDX-License-Identifier: CC-BY-SA-4.0
+!#
+!# Quiet slate titlebars, a single ember accent, and a warm destructive
+!# hover on close. Buttons use Openbox's built-in vector glyphs.
+
+border.width: 1
+padding.width: 2
+padding.height: 2
+window.handle.width: 0
+window.client.padding.width: 0
+window.client.padding.height: 0
+menu.overlap: 4
+menu.border.width: 1
+menu.border.color: #3A434F
+
+*.font: shadow=n
+window.active.label.text.font: shadow=n
+window.inactive.label.text.font: shadow=n
+menu.items.font: shadow=n
+
+! ------------------------------------------------------------- titlebars
+
+window.active.title.bg: flat solid
+window.active.title.bg.color: #1B2027
+window.active.title.separator.color: #2A313B
+window.active.border.color: #2A313B
+window.active.label.bg: parentrelative
+window.active.label.text.color: #F4F6F8
+window.active.button.*.bg: parentrelative
+window.active.button.*.image.color: #A6AEBB
+
+window.inactive.title.bg: flat solid
+window.inactive.title.bg.color: #171B21
+window.inactive.title.separator.color: #222831
+window.inactive.border.color: #222831
+window.inactive.label.bg: parentrelative
+window.inactive.label.text.color: #77808E
+window.inactive.button.*.bg: parentrelative
+window.inactive.button.*.image.color: #5D6673
+
+! button hover / press
+window.active.button.*.hover.bg: flat solid
+window.active.button.*.hover.bg.color: #2B333E
+window.active.button.*.hover.image.color: #F4F6F8
+window.active.button.*.pressed.bg: flat solid
+window.active.button.*.pressed.bg.color: #14171C
+window.active.button.*.pressed.image.color: #FFB35C
+window.inactive.button.*.hover.bg: flat solid
+window.inactive.button.*.hover.bg.color: #242A32
+window.inactive.button.*.hover.image.color: #C3CAD5
+
+! close gets the only red in the theme
+window.active.button.close.hover.bg: flat solid
+window.active.button.close.hover.bg.color: #E5484D
+window.active.button.close.hover.image.color: #FFFFFF
+window.active.button.close.pressed.bg: flat solid
+window.active.button.close.pressed.bg.color: #B83A3E
+window.active.button.close.pressed.image.color: #FFFFFF
+window.active.button.close.disabled.image.color: #6C7684
+
+! handles and grips
+window.*.handle.bg: flat solid
+window.*.handle.bg.color: #1B2027
+window.*.grip.bg: flat solid
+window.*.grip.bg.color: #262C36
+
+! ----------------------------------------------------------------- menu
+
+menu.title.bg: flat solid
+menu.title.bg.color: #101317
+menu.title.text.color: #FFB35C
+menu.title.text.justify: left
+
+menu.items.bg: flat solid
+menu.items.bg.color: #1B2027
+menu.items.text.color: #F4F6F8
+menu.items.disabled.text.color: #69727F
+menu.items.justify: left
+
+menu.items.active.bg: flat solid
+menu.items.active.bg.color: #F26A3D
+menu.items.active.text.color: #14171C
+
+menu.separator.width: 1
+menu.separator.padding.width: 0
+menu.separator.padding.height: 3
+menu.separator.color: #2A313B
+
+! ------------------------------------------------------------------- osd
+
+osd.bg: flat solid
+osd.bg.color: #1B2027
+osd.border.width: 1
+osd.border.color: #F26A3D
+osd.active.label.bg: parentrelative
+osd.active.label.text.color: #F4F6F8
+osd.inactive.label.bg: parentrelative
+osd.inactive.label.text.color: #A6AEBB
+osd.hilight.bg: flat solid
+osd.hilight.bg.color: #F26A3D

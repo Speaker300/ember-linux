@@ -1,0 +1,58 @@
+# Ember Linux — Calamares branding component
+#
+# Install this directory as:
+#   /usr/share/calamares/branding/ember
+# and set `branding: ember` in /etc/calamares/settings.conf.
+#
+# SPDX-FileCopyrightText: 2026 Ember Linux contributors
+# SPDX-License-Identifier: CC-BY-SA-4.0
+---
+componentName: ember
+
+### Welcome wording ---------------------------------------------------------
+# false: "Welcome to Ember Linux."   true: "Welcome to the Ember Linux installer."
+welcomeStyleCalamares: false
+welcomeExpandingLogo: false
+
+### Window ------------------------------------------------------------------
+windowExpanding: normal
+windowSize: 800px,520px
+windowPlacement: center
+
+### Panels ------------------------------------------------------------------
+sidebar: widget
+navigation: widget
+
+### Strings -----------------------------------------------------------------
+strings:
+    productName:         "Ember Linux"
+    shortProductName:    "Ember"
+    version:             "1.0"
+    shortVersion:        "1.0"
+    versionedName:       "Ember Linux 1.0 \"Cinder\""
+    shortVersionedName:  "Ember 1.0"
+    bootloaderEntryName: "Ember Linux"
+    productUrl:          "https://emberlinux.org/"
+    supportUrl:          "https://emberlinux.org/help/"
+    knownIssuesUrl:      "https://emberlinux.org/help/installer"
+    releaseNotesUrl:     "https://emberlinux.org/releases/1.0/"
+    donateUrl:           "https://emberlinux.org/donate/"
+
+### Images ------------------------------------------------------------------
+images:
+    productBanner:       "banner.png"
+    productIcon:         "ember-icon.png"
+    productLogo:         "ember-logo.png"
+    productWallpaper:    "wallpaper.png"
+    productWelcome:      "welcome.png"
+
+### Palette -----------------------------------------------------------------
+style:
+    SidebarBackground:        "#101317"
+    SidebarText:              "#F4F6F8"
+    SidebarTextCurrent:       "#14171C"
+    SidebarBackgroundCurrent: "#F26A3D"
+
+### Slideshow ---------------------------------------------------------------
+slideshowAPI: 2
+slideshow: show.qml

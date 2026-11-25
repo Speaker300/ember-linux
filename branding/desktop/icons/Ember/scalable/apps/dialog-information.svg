@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48" height="48">
+  <title>dialog-information</title>
+  <g stroke-linecap="round" stroke-linejoin="round">
+      <path d="M9 12 H39 C40.7 12 42 13.3 42 15 V30 C42 31.7 40.7 33 39 33 H25 L18 39 V33 H9 C7.3 33 6 31.7 6 30 V15 C6 13.3 7.3 12 9 12 Z"
+            fill="none" stroke="#FFB35C" stroke-width="2.2" stroke-linejoin="round"/>
+      <path d="M24 18 V27" stroke="#F26A3D" stroke-width="2.7" stroke-linecap="round"/>
+      <circle cx="24" cy="29.6" r="1.5" fill="#F26A3D"/>
+    </g>
+</svg>

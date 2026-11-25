@@ -33,10 +33,10 @@ else stays quiet so the desktop does not look like a theme demo.
 
 ## Contrast (WCAG 2.1)
 
-- `frost` on `ink`: 15.8:1 (AAA)
-- `ash` on `ink`: 7.4:1 (AAA)
-- `ink` on `ember`: 6.1:1 (AA, large text AAA)
-- `ember` on `ink`: 6.1:1 (AA)
+- `frost` on `ink`: 16.6:1 (AAA)
+- `ash` on `ink`: 8.0:1 (AAA)
+- `ink` on `ember`: 5.9:1 (AA, large text AAA)
+- `ember` on `ink`: 5.9:1 (AA)
 
 ## Colour files
 

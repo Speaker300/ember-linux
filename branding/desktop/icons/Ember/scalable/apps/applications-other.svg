@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48" height="48">
+  <title>applications-system</title>
+  <g stroke-linecap="round" stroke-linejoin="round">
+      <rect x="10" y="10" width="12" height="12" rx="3" fill="none" stroke="#F26A3D" stroke-width="2.2"/>
+      <rect x="26" y="10" width="12" height="12" rx="3" fill="none" stroke="#FFB35C" stroke-width="2.2"/>
+      <rect x="10" y="26" width="12" height="12" rx="3" fill="none" stroke="#3FA796" stroke-width="2.2"/>
+      <rect x="26" y="26" width="12" height="12" rx="3" fill="none" stroke="#A6AEBB" stroke-width="2.2"/>
+    </g>
+</svg>

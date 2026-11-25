@@ -1,0 +1,67 @@
+#!/bin/sh
+# Ember Linux — Welcome
+# SPDX-License-Identifier: MIT
+#
+# Opens the offline Welcome guide in the user's browser. Falls back to a
+# GTK/KDE dialog, then to a terminal pager. No network access is required.
+
+set -u
+
+DOC_DIR="/usr/share/ember/welcome"
+PAGE="index.html"
+TITLE="Welcome to Ember Linux"
+
+case "${1:-}" in
+    --help|-h)
+        PAGE="index.html#help"
+        ;;
+    --about)
+        exec ember-about
+        ;;
+    --text)
+        exec sed -n '1,200p' "$DOC_DIR/welcome.txt"
+        ;;
+    --version)
+        echo "Ember Linux 1.0 (Cinder)"
+        exit 0
+        ;;
+esac
+
+url="file://${DOC_DIR}/${PAGE}"
+
+if [ -n "${DISPLAY:-}${WAYLAND_DISPLAY:-}" ]; then
+    # Prefer a real browser so the page is readable and offline.
+    for browser in firefox firefox-bin chromium chromium-browser epiphany midori brave-browser; do
+        if command -v "$browser" >/dev/null 2>&1; then
+            "$browser" "$url" >/dev/null 2>&1 &
+            exit 0
+        fi
+    done
+    if command -v xdg-open >/dev/null 2>&1; then
+        xdg-open "$url" >/dev/null 2>&1 &
+        exit 0
+    fi
+
+    if command -v zenity >/dev/null 2>&1; then
+        zenity --text-info --title="$TITLE" --filename="$DOC_DIR/welcome.txt" \
+               --width=720 --height=560 2>/dev/null
+        exit $?
+    fi
+    if command -v kdialog >/dev/null 2>&1; then
+        kdialog --title "$TITLE" --textbox "$DOC_DIR/welcome.txt" 720 560 2>/dev/null
+        exit $?
+    fi
+    if command -v xmessage >/dev/null 2>&1; then
+        xmessage -center -title "$TITLE" -file "$DOC_DIR/welcome.txt" 2>/dev/null
+        exit $?
+    fi
+    if command -v xterm >/dev/null 2>&1; then
+        xterm -title "$TITLE" -fa "Inter" -fs 10 -e sh -c \
+            'sed -n "1,120p" "$1"; printf "\nPress Enter to close…"; read _' sh \
+            "$DOC_DIR/welcome.txt" 2>/dev/null
+        exit $?
+    fi
+fi
+
+# No display: print the guide so it still works over SSH or a text console.
+sed -n '1,160p' "$DOC_DIR/welcome.txt"

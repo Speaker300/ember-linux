@@ -1,0 +1,172 @@
+/*
+ * Ember Linux — rofi theme
+ * SPDX-License-Identifier: CC-BY-SA-4.0
+ *
+ * Rofi class selectors are dot-separated: element.normal.normal,
+ * element.selected.normal, element.alternate.normal. Using descendant
+ * selectors leaves rofi's default white list background in place.
+ */
+
+* {
+    bg:          #14171C;
+    bg-alt:      #1B2027;
+    bg-row:      #171C23;
+    fg:          #F4F6F8;
+    fg-dim:      #A6AEBB;
+    accent:      #F26A3D;
+    accent-fg:   #14171C;
+    line:        #3A434F;
+    urgent:      #E5484D;
+
+    font: "Inter 11";
+}
+
+window {
+    width: 640px;
+    border: 1px;
+    border-color: @line;
+    border-radius: 14px;
+    background-color: @bg;
+    padding: 14px;
+}
+
+mainbox {
+    spacing: 10px;
+    background-color: @bg;
+}
+
+inputbar {
+    padding: 9px 13px;
+    spacing: 9px;
+    background-color: @bg-alt;
+    border: 1px;
+    border-color: @line;
+    border-radius: 8px;
+}
+
+prompt {
+    text-color: @accent;
+}
+
+textbox-prompt-colon {
+    str: "›";
+    text-color: @accent;
+}
+
+entry {
+    background-color: @bg-alt;
+    text-color: @fg;
+    placeholder: "Search…";
+    placeholder-color: @fg-dim;
+    cursor: text;
+}
+
+listview {
+    background-color: @bg;
+    lines: 8;
+    columns: 1;
+    spacing: 3px;
+    padding: 0;
+    scrollbar: false;
+    fixed-height: true;
+    dynamic: true;
+}
+
+element {
+    padding: 8px 10px;
+    spacing: 10px;
+    border-radius: 7px;
+    border: 0;
+    background-color: @bg;
+}
+
+element.normal.normal {
+    background-color: @bg;
+    text-color: @fg;
+}
+
+element.alternate.normal {
+    background-color: @bg-row;
+    text-color: @fg;
+}
+
+element.selected.normal {
+    background-color: @accent;
+    text-color: @accent-fg;
+}
+
+element.selected.urgent {
+    background-color: @urgent;
+    text-color: #FFFFFF;
+}
+
+element-text {
+    background-color: inherit;
+    text-color: inherit;
+    font: "Inter 11";
+}
+
+element-icon {
+    size: 1.15em;
+    background-color: inherit;
+}
+
+scrollbar {
+    width: 4px;
+    handle-width: 4px;
+    handle-color: @line;
+    background-color: transparent;
+}
+
+mode-switcher {
+    spacing: 6px;
+    background-color: @bg;
+}
+
+button {
+    padding: 5px 9px;
+    border-radius: 6px;
+    background-color: @bg-alt;
+    text-color: @fg-dim;
+}
+
+button.selected {
+    background-color: @accent;
+    text-color: @accent-fg;
+}
+
+message {
+    background-color: @bg-alt;
+    border: 1px;
+    border-color: @line;
+    border-radius: 8px;
+    padding: 8px 12px;
+    text-color: @fg;
+}
+
+error {
+    background-color: @urgent;
+    text-color: #FFFFFF;
+}
+
+/* Rofi wraps the prompt and entry in textboxes. Clear their default white
+ * background explicitly; otherwise the input bar turns into a white strip. */
+textbox {
+    background-color: transparent;
+    text-color: @fg;
+}
+
+prompt,
+textbox-prompt-colon {
+    background-color: transparent;
+}
+
+entry textbox {
+    background-color: @bg-alt;
+    text-color: @fg;
+}
+
+case-indicator {
+    background-color: transparent;
+    text-color: @fg-dim;
+}

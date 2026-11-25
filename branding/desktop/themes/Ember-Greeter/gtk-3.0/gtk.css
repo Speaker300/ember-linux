@@ -1,0 +1,174 @@
+/*
+ * Ember Linux — LightDM GTK greeter theme
+ * SPDX-License-Identifier: CC-BY-SA-4.0
+ *
+ * Adwaita dark provides the widget baseline; the Ember rules below turn the
+ * login box into a quiet dark card and use ember only for focus and the login
+ * action. Widget names match lightdm-gtk-greeter's UI file.
+ */
+@import url("resource:///org/gtk/libgtk/theme/Adwaita/gtk-contained-dark.css");
+
+@define-color theme_bg_color #14171C;
+@define-color theme_fg_color #F4F6F8;
+@define-color theme_base_color #1B2027;
+@define-color theme_text_color #F4F6F8;
+@define-color theme_selected_bg_color #F26A3D;
+@define-color theme_selected_fg_color #14171C;
+@define-color insensitive_fg_color #6C7684;
+@define-color borders #2A313B;
+@define-color accent_color #F26A3D;
+@define-color accent_bg_color #F26A3D;
+@define-color accent_fg_color #14171C;
+
+* {
+    font-family: "Inter";
+}
+
+#login_window {
+    background-color: #14171C;
+    border: 1px solid #2A313B;
+    border-radius: 18px;
+    box-shadow: 0 18px 50px rgba(0, 0, 0, 0.55);
+}
+
+#login_box {
+    padding: 12px 22px 20px 22px;
+}
+
+#user_image_border {
+    border: none;
+    padding: 0;
+    background-color: transparent;
+}
+
+#login_window label.title {
+    font-size: 14pt;
+    font-weight: 600;
+    color: #F4F6F8;
+}
+
+#user_image {
+    border-radius: 999px;
+}
+
+#username_entry,
+#password_entry {
+    background-color: #1B2027;
+    color: #F4F6F8;
+    border: 1px solid #3A434F;
+    border-radius: 8px;
+    padding: 9px 12px;
+    caret-color: #FFB35C;
+}
+
+#username_entry:focus,
+#password_entry:focus {
+    border-color: #FFB35C;
+    box-shadow: 0 0 0 1px rgba(255, 179, 92, 0.30);
+}
+
+#login_button {
+    background-color: #F26A3D;
+    background-image: none;
+    color: #14171C;
+    border: 1px solid #F26A3D;
+    border-radius: 8px;
+    padding: 9px 18px;
+    font-weight: 600;
+}
+
+#login_button:hover {
+    background-color: #FF8055;
+    border-color: #FF8055;
+}
+
+#login_button:active {
+    background-color: #D8432A;
+    border-color: #D8432A;
+}
+
+#login_button:disabled {
+    background-color: #4A3329;
+    color: #A78D80;
+    border-color: #4A3329;
+}
+
+#message_label {
+    color: #FFB35C;
+    font-size: 12px;
+}
+
+#greeter_infobar {
+    background-color: #2A1B16;
+    color: #FFB35C;
+    border: 1px solid #5A3A2E;
+    border-radius: 8px;
+    padding: 6px 10px;
+}
+
+#panel_window {
+    background-color: #14171C;
+    border-top: 1px solid #2A313B;
+    color: #A6AEBB;
+}
+
+#panel_window menubar,
+#panel_window menubar menuitem,
+#panel_window button {
+    background-color: transparent;
+    background-image: none;
+    color: #A6AEBB;
+    border: none;
+    box-shadow: none;
+}
+
+#panel_window menubar menuitem:hover,
+#panel_window button:hover {
+    color: #F4F6F8;
+    background-color: #232A33;
+    border-radius: 6px;
+}
+
+#panel_window label {
+    color: #A6AEBB;
+}
+
+#power_window {
+    background-color: #1B2027;
+    border: 1px solid #3A434F;
+    border-radius: 12px;
+}
+
+#power_window button {
+    border-radius: 7px;
+    padding: 6px 12px;
+}
+
+#power_window button:hover {
+    background-color: #232A33;
+}
+
+#session_menu,
+#language_menu,
+#layout_menu {
+    color: #A6AEBB;
+}
+
+#session_menu:hover,
+#language_menu:hover,
+#layout_menu:hover {
+    color: #F4F6F8;
+}
+
+#cancel_button {
+    background-color: transparent;
+    color: #A6AEBB;
+    border: 1px solid #3A434F;
+    border-radius: 7px;
+    padding: 5px 12px;
+}
+
+#cancel_button:hover {
+    color: #F4F6F8;
+    background-color: #232A33;
+}

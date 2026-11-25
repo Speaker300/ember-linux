@@ -1,0 +1,18 @@
+#!/bin/sh
+# Ember Linux — live-session Openbox autostart
+# SPDX-License-Identifier: CC-BY-SA-4.0
+#
+# The live desktop uses the same panel, wallpaper and policy as the installed
+# system, then launches Calamares. Installed systems use the normal autostart
+# (without the installer); install-into-chroot.sh chooses the right one when
+# /usr/bin/calamares exists in the target.
+
+if [ -r /etc/xdg/openbox/autostart ]; then
+    sh /etc/xdg/openbox/autostart
+fi
+
+# The live image uses passwordless sudo for Calamares. Keep the same delay as
+# the stock live session so the panel is visible before the installer opens.
+if [ -x /usr/bin/calamares ] && command -v sudo >/dev/null 2>&1; then
+    (sleep 3; sudo -n /usr/bin/calamares) >/dev/null 2>&1 &
+fi

@@ -17,10 +17,10 @@
     "danger":     { "hex": "#E5484D", "role": "errors, destructive actions" }
   },
   "contrast": {
-    "frost_on_ink": "15.8:1",
-    "ash_on_ink": "7.4:1",
-    "ink_on_ember": "6.1:1",
-    "ember_on_ink": "6.1:1"
+    "frost_on_ink": "16.6:1",
+    "ash_on_ink": "8.0:1",
+    "ink_on_ember": "5.9:1",
+    "ember_on_ink": "5.9:1"
   },
   "usage": {
     "accent": "#F26A3D",

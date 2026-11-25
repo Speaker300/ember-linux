@@ -1,0 +1,13 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=About Ember
+GenericName=System Information
+Comment=Version, kernel and licence information for this Ember Linux system
+Exec=ember-about
+TryExec=ember-about
+Icon=ember-about
+Terminal=false
+Categories=System;
+Keywords=about;version;system;info;
+StartupNotify=true

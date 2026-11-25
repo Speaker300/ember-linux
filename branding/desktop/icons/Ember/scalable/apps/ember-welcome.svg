@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48" height="48">
+  <title>ember-welcome</title>
+  <g stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="24" cy="24" r="19" fill="#1B2027" stroke="#2A313B" stroke-width="1.4"/>
+      <g transform="translate(6.7 7.7) scale(0.0664)">
+        <path d="M256 36 C274 132 306 214 340 272 C368 320 356 388 314 426 C292 446 268 456 256 458 C238 454 214 440 196 418 C166 382 162 326 186 282 C214 232 238 152 256 36 Z" fill="#F26A3D"/>
+        <path d="M256 44 C248 166 246 324 258 450" fill="none" stroke="#14171C" stroke-opacity="0.3" stroke-width="10"/>
+      </g>
+      <circle cx="14" cy="17" r="1.8" fill="#FFB35C"/>
+      <circle cx="34" cy="14" r="1.2" fill="#FFB35C"/>
+    </g>
+</svg>

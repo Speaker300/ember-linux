@@ -10,6 +10,8 @@ import os
 import subprocess
 from pathlib import Path
 
+from PIL import Image
+
 from fontTools.pens.svgPathPen import SVGPathPen
 from fontTools.pens.transformPen import TransformPen
 from fontTools.ttLib import TTFont
@@ -190,6 +192,19 @@ def lockup_svg(dark: bool = False) -> str:
 # ------------------------------------------------------------------- build --
 
 
+def calamares_assets() -> None:
+    """Generate the two Calamares-only images from the lockup."""
+    cal = ROOT / "calamares"
+    cal.mkdir(parents=True, exist_ok=True)
+    lock = Image.open(OUT / "ember-lockup.png").convert("RGBA")
+    welcome = lock.resize((480, round(lock.height * 480 / lock.width)), Image.LANCZOS)
+    welcome.save(cal / "welcome.png")
+    banner = Image.new("RGBA", (460, 64), (0, 0, 0, 0))
+    logo = lock.resize((round(lock.width * 56 / lock.height), 56), Image.LANCZOS)
+    banner.alpha_composite(logo, ((460 - logo.width) // 2, 4))
+    banner.save(cal / "banner.png")
+
+
 def render(svg: str, out: Path, width: int | None = None, height: int | None = None) -> None:
     out.parent.mkdir(parents=True, exist_ok=True)
     tmp = out.with_suffix(".tmp.svg")
@@ -251,6 +266,7 @@ def main() -> None:
 </svg>
 """
     render(banner, OUT / "ember-banner.png", 1600, 500)
+    calamares_assets()
     print("identity written to", OUT)
 
 

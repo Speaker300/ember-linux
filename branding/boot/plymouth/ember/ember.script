@@ -1,0 +1,99 @@
+# Ember Linux Plymouth theme
+# SPDX-License-Identifier: CC-BY-SA-4.0
+#
+# Stable Plymouth script APIs only: sprites, pre-rendered frames, text and
+# SetBootProgressFunction. The layout is proportional so it survives a mode
+# change from firmware to the KMS driver.
+
+screen_width = Window.GetWidth();
+screen_height = Window.GetHeight();
+
+background = Image("background.png");
+background_sprite = Sprite(background);
+background_sprite.SetX(screen_width / 2 - background.GetWidth() / 2);
+background_sprite.SetY(screen_height / 2 - background.GetHeight() / 2);
+background_sprite.SetZ(-100);
+
+logo = Image("logo.png");
+logo_sprite = Sprite(logo);
+logo_sprite.SetX(screen_width / 2 - logo.GetWidth() / 2);
+logo_sprite.SetY(screen_height * 0.20);
+logo_sprite.SetZ(10);
+
+title = Image.Text("Ember Linux", 0.956, 0.965, 0.973, 1.0);
+title_sprite = Sprite(title);
+title_sprite.SetX(screen_width / 2 - title.GetWidth() / 2);
+title_sprite.SetY(screen_height * 0.50);
+title_sprite.SetZ(10);
+
+subtitle = Image.Text("starting the system", 0.65, 0.68, 0.73, 1.0);
+subtitle_sprite = Sprite(subtitle);
+subtitle_sprite.SetX(screen_width / 2 - subtitle.GetWidth() / 2);
+subtitle_sprite.SetY(screen_height * 0.535);
+subtitle_sprite.SetZ(10);
+
+track = Image("progress_track.png");
+track_sprite = Sprite(track);
+track_sprite.SetX(screen_width / 2 - track.GetWidth() / 2);
+track_sprite.SetY(screen_height * 0.60);
+track_sprite.SetZ(10);
+
+progress_images = [];
+for (i = 0; i < 21; i++) {
+    if (i < 10) {
+        progress_images[i] = Image("progress-0" + i + ".png");
+    } else {
+        progress_images[i] = Image("progress-" + i + ".png");
+    }
+}
+
+progress_sprite = Sprite();
+progress_sprite.SetZ(11);
+progress_sprite.SetX(screen_width / 2 - track.GetWidth() / 2);
+progress_sprite.SetY(screen_height * 0.60);
+progress_sprite.SetImage(progress_images[0]);
+
+throbber_images = [];
+for (i = 0; i < 12; i++) {
+    if (i < 10) {
+        throbber_images[i] = Image("throbber-0" + i + ".png");
+    } else {
+        throbber_images[i] = Image("throbber-" + i + ".png");
+    }
+}
+
+throbber_sprite = Sprite(throbber_images[0]);
+throbber_sprite.SetX(screen_width / 2 - 36);
+throbber_sprite.SetY(screen_height * 0.645);
+throbber_sprite.SetZ(11);
+
+message_sprite = Sprite();
+message_sprite.SetZ(10);
+
+frame = 0;
+
+fun refresh_callback ()
+{
+    frame = frame + 1;
+    throbber_sprite.SetImage(throbber_images[frame % 12]);
+}
+
+fun progress_callback (duration, progress)
+{
+    index = Math.Int(progress * 20);
+    if (index < 0) { index = 0; }
+    if (index > 20) { index = 20; }
+    progress_sprite.SetImage(progress_images[index]);
+}
+
+fun message_callback (text)
+{
+    message = Image.Text(text, 0.78, 0.82, 0.87, 1.0);
+    message_sprite.SetImage(message);
+    message_sprite.SetX(screen_width / 2 - message.GetWidth() / 2);
+    message_sprite.SetY(screen_height * 0.70);
+}
+
+Plymouth.SetRefreshFunction(refresh_callback);
+Plymouth.SetBootProgressFunction(progress_callback);
+Plymouth.SetMessageFunction(message_callback);

@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48" height="48">
+  <title>multimedia-volume-control</title>
+  <g stroke-linecap="round" stroke-linejoin="round">
+      <path d="M10 20 H16 L23 14 V34 L16 28 H10 Z" fill="none" stroke="#F26A3D" stroke-width="2.3" stroke-linejoin="round"/>
+      <path d="M28 19 C30.5 21.2 30.5 26.8 28 29" fill="none" stroke="#FFB35C" stroke-width="2.2" stroke-linecap="round"/>
+      <path d="M32.5 15.5 C37 19.5 37 28.5 32.5 32.5" fill="none" stroke="#FFB35C" stroke-width="2" stroke-linecap="round" opacity="0.7"/>
+    </g>
+</svg>

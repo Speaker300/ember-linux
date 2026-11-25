@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="dark">
+<title>Welcome to Ember Linux</title>
+<style>
+  :root{
+    --ink:#14171c; --basalt:#1b2027; --graphite:#262c36; --ash:#a6aebb;
+    --frost:#f4f6f8; --body:#c3cad5; --ember:#f26a3d; --amber:#ffb35c;
+    --teal:#3fa796; --line:#2a313b; --radius:14px;
+  }
+  *{box-sizing:border-box}
+  html{background:var(--ink); color:var(--body)}
+  body{
+    margin:0; font:15px/1.6 Inter,"Noto Sans",system-ui,sans-serif;
+    background:
+      radial-gradient(1000px 620px at 88% 8%, rgba(242,106,61,.13), transparent 65%),
+      radial-gradient(800px 520px at 8% 12%, rgba(63,167,150,.06), transparent 70%),
+      var(--ink);
+  }
+  a{color:var(--amber); text-decoration:none}
+  a:hover{text-decoration:underline}
+  .wrap{max-width:1080px; margin:0 auto; padding:0 28px}
+  header{
+    display:flex; align-items:center; gap:14px; padding:22px 0;
+    border-bottom:1px solid var(--line);
+  }
+  header img{width:38px; height:38px; border-radius:10px}
+  .brand{font-weight:700; color:var(--frost); letter-spacing:-.2px}
+  .brand small{display:block; color:var(--amber); font-weight:600; font-size:10px; letter-spacing:2.4px}
+  nav{margin-left:auto; display:flex; gap:22px; font-size:13px}
+  nav a{color:var(--ash)}
+  nav a:hover{color:var(--frost); text-decoration:none}
+  .hero{padding:64px 0 40px; display:grid; grid-template-columns:1.15fr .85fr; gap:40px; align-items:center}
+  .eyebrow{color:var(--ember); font-size:11px; font-weight:700; letter-spacing:2.6px; text-transform:uppercase}
+  h1{font-size:48px; line-height:1.08; letter-spacing:-1.4px; color:var(--frost); margin:14px 0 16px; font-weight:700}
+  h1 em{font-style:normal; color:var(--ember)}
+  .lede{font-size:17px; max-width:560px; color:var(--body)}
+  .hero-art{position:relative; display:flex; justify-content:center}
+  .hero-art img{width:260px; filter:drop-shadow(0 22px 45px rgba(242,106,61,.22))}
+  .hero-art::before{
+    content:""; position:absolute; inset:12% 8%; border-radius:50%;
+    background:radial-gradient(circle, rgba(242,106,61,.20), transparent 65%); z-index:-1;
+  }
+  .grid{display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:18px; padding:8px 0 26px}
+  .card{
+    background:linear-gradient(180deg, rgba(27,32,39,.95), rgba(23,27,33,.95));
+    border:1px solid var(--line); border-radius:var(--radius); padding:24px;
+  }
+  .card h2{font-size:17px; color:var(--frost); margin:0 0 6px; letter-spacing:-.2px}
+  .card p{margin:0 0 12px; color:var(--body)}
+  .card p:last-child{margin-bottom:0}
+  .tag{display:inline-block; font-size:10px; letter-spacing:1.6px; color:var(--amber);
+       border:1px solid rgba(255,179,92,.28); border-radius:99px; padding:2px 9px; margin-bottom:12px}
+  ul.clean{margin:0; padding:0; list-style:none}
+  ul.clean li{padding:8px 0; border-bottom:1px solid rgba(42,49,59,.7); display:flex; gap:10px}
+  ul.clean li:last-child{border-bottom:0}
+  ul.clean strong{color:var(--frost); font-weight:600}
+  kbd{
+    font:11px/1 Inter,monospace; color:var(--frost); background:var(--graphite);
+    border:1px solid #3a434f; border-bottom-width:2px; border-radius:5px; padding:4px 7px;
+  }
+  code,pre{font-family:"JetBrains Mono","Hack","Noto Sans Mono",monospace}
+  .cmd{
+    display:flex; align-items:center; gap:10px; background:#101419; border:1px solid var(--line);
+    border-radius:9px; padding:10px 12px; margin:9px 0; overflow:hidden;
+  }
+  .cmd code{color:var(--frost); font-size:12.5px; white-space:pre-wrap; overflow-wrap:anywhere;
+            flex:1 1 auto; min-width:0; line-height:1.45}
+  .cmd .prompt{color:var(--ember); user-select:none}
+  .copy{
+    margin-left:auto; flex:none; background:transparent; color:var(--ash);
+    border:1px solid var(--line); border-radius:6px; padding:4px 8px; font-size:11px; cursor:pointer;
+  }
+  .copy:hover{color:var(--frost); border-color:var(--amber)}
+  .wide{grid-column:1 / -1}
+  .two-col{display:grid; grid-template-columns:1fr 1fr; gap:22px}
+  .muted{color:var(--ash); font-size:13px}
+  #help ul.clean li{display:block}
+  #help ul.clean li strong{display:block; margin-bottom:2px}
+  #help ul.clean li span{display:block; color:var(--body)}
+  .warn{color:var(--amber)}
+  footer{border-top:1px solid var(--line); margin-top:26px; padding:26px 0 46px; color:var(--ash); font-size:12px}
+  footer strong{color:var(--frost)}
+  @media (max-width:820px){
+    .hero{grid-template-columns:1fr; padding-top:42px}
+    .hero-art{order:-1} .hero-art img{width:170px}
+    h1{font-size:38px} .grid,.two-col{grid-template-columns:1fr} nav{display:none}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <img src="logo.png" alt="Ember Linux logo">
+    <div class="brand">Ember Linux<small>1.0 · CINDER</small></div>
+    <nav>
+      <a href="#start">Getting started</a>
+      <a href="#desktop">Desktop</a>
+      <a href="#help">Help</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <div>
+      <div class="eyebrow">Welcome</div>
+      <h1>Your new system is <em>ready</em>.</h1>
+      <p class="lede">Ember is a careful desktop built on Gentoo. This page collects the first
+      few things worth doing: update the system, connect to the network, learn the shortcuts,
+      and find help if something is not right.</p>
+    </div>
+    <div class="hero-art"><img src="lockup.png" alt="Ember Linux"></div>
+  </section>
+
+  <section class="grid" id="start">
+    <article class="card">
+      <div class="tag">FIRST 10 MINUTES</div>
+      <h2>Update the system</h2>
+      <p>Ember ships a consistent snapshot. Sync Portage and rebuild what has changed since
+      the image was made.</p>
+      <div class="cmd"><span class="prompt">$</span><code>sudo emaint sync -a</code><button class="copy" data-copy="sudo emaint sync -a">Copy</button></div>
+      <div class="cmd"><span class="prompt">$</span><code>sudo emerge --ask --update --deep --newuse @world</code><button class="copy" data-copy="sudo emerge --ask --update --deep --newuse @world">Copy</button></div>
+      <p class="muted">Read the news before a large update: <code>eselect news read</code>.</p>
+    </article>
+
+    <article class="card">
+      <div class="tag">SOFTWARE</div>
+      <h2>Install what you need</h2>
+      <p>Portage is the package manager. Search, inspect and install without leaving the terminal.</p>
+      <div class="cmd"><span class="prompt">$</span><code>emerge --search firefox</code><button class="copy" data-copy="emerge --search firefox">Copy</button></div>
+      <div class="cmd"><span class="prompt">$</span><code>sudo emerge --ask www-client/firefox</code><button class="copy" data-copy="sudo emerge --ask www-client/firefox">Copy</button></div>
+      <p class="muted">For package details and reverse dependencies, install <code>app-portage/gentoolkit</code>
+      and use <code>equery</code>.</p>
+    </article>
+
+    <article class="card">
+      <div class="tag">NETWORK</div>
+      <h2>Get online</h2>
+      <p>NetworkManager is enabled by default. Click the network icon in the panel, or use the
+      text interface if you prefer.</p>
+      <div class="cmd"><span class="prompt">$</span><code>nmtui</code><button class="copy" data-copy="nmtui">Copy</button></div>
+      <p class="muted">Check the connection with <code>nmcli device status</code> and
+      <code>ping -c 3 gentoo.org</code>.</p>
+    </article>
+
+    <article class="card">
+      <div class="tag">SERVICES</div>
+      <h2>Turn things on</h2>
+      <p>OpenRC manages services. Add one to the default runlevel, then start it now.</p>
+      <div class="cmd"><span class="prompt">$</span><code>sudo rc-update add NetworkManager default</code><button class="copy" data-copy="sudo rc-update add NetworkManager default">Copy</button></div>
+      <div class="cmd"><span class="prompt">$</span><code>sudo rc-service NetworkManager start</code><button class="copy" data-copy="sudo rc-service NetworkManager start">Copy</button></div>
+    </article>
+  </section>
+
+  <section class="grid" id="desktop">
+    <article class="card wide">
+      <div class="tag">YOUR DESKTOP</div>
+      <h2>Openbox, tint2 and rofi</h2>
+      <div class="two-col">
+        <div>
+          <p>The panel at the bottom of the screen holds your launchers, open windows, the
+          system tray and the clock. Right-click the desktop for the full application menu.</p>
+          <ul class="clean">
+            <li><kbd>Super</kbd><span>+</span><kbd>Enter</kbd><span>Open a terminal</span></li>
+            <li><kbd>Super</kbd><span>+</span><kbd>D</kbd><span>Application finder (rofi)</span></li>
+            <li><kbd>Super</kbd><span>+</span><kbd>E</kbd><span>File manager</span></li>
+            <li><kbd>Super</kbd><span>+</span><kbd>B</kbd><span>Web browser</span></li>
+            <li><kbd>Super</kbd><span>+</span><kbd>W</kbd><span>This welcome page</span></li>
+          </ul>
+        </div>
+        <div>
+          <p><strong style="color:var(--frost)">Window control.</strong> Drag the title bar to move,
+          drag an edge to resize. <kbd>Super</kbd> + arrows snap a window to a half or maximise it.
+          <kbd>Alt</kbd> + <kbd>Tab</kbd> cycles windows; <kbd>Alt</kbd> + <kbd>F4</kbd> closes one.</p>
+          <p><strong style="color:var(--frost)">Workspaces.</strong> There are four named desktops:
+          Main, Web, Work and Media. Switch with <kbd>Super</kbd> + <kbd>1</kbd>–<kbd>4</kbd>,
+          or move a window with <kbd>Super</kbd> + <kbd>Shift</kbd> + <kbd>1</kbd>–<kbd>4</kbd>.</p>
+          <p class="muted">Change the theme, fonts or panel later with <code>lxappearance</code>,
+          <code>obconf</code> and <code>tint2conf</code> if those tools are installed.</p>
+        </div>
+      </div>
+    </article>
+  </section>
+
+  <section class="grid" id="help">
+    <article class="card">
+      <div class="tag">HELP</div>
+      <h2>When something is not right</h2>
+      <ul class="clean">
+        <li><strong>Installer log</strong><span>the log path is shown on the installer's error page; copy it before closing the live session.</span></li>
+        <li><strong>Terminal</strong><span>press <kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>F2</kbd> for a text console, <kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>F7</kbd> to return.</span></li>
+        <li><strong>Boot menu</strong><span>hold <kbd>Shift</kbd> (BIOS) or press <kbd>Esc</kbd> (UEFI) while booting to reach GRUB.</span></li>
+        <li><strong>Package problems</strong><span>read <code>/var/log/emerge.log</code> and run <code>emerge --info</code> for a report.</span></li>
+      </ul>
+    </article>
+
+    <article class="card">
+      <div class="tag">DOCUMENTATION</div>
+      <h2>Go deeper</h2>
+      <p>The Gentoo Handbook is the authoritative guide for Portage, USE flags, kernels and
+      services. Ember does not replace it; it gives you a working desktop to read it from.</p>
+      <p><a href="https://wiki.gentoo.org/wiki/Handbook:AMD64">Gentoo AMD64 Handbook →</a></p>
+      <p><a href="https://emberlinux.org/help/">Ember help and release notes →</a></p>
+      <p class="muted">Ember Linux is an independent project built on Gentoo. Gentoo is a
+      trademark of the Gentoo Foundation. Ember is not affiliated with or endorsed by the
+      Gentoo Foundation.</p>
+    </article>
+  </section>
+
+  <footer>
+    <strong>Ember Linux 1.0 “Cinder”</strong> · Gentoo-based · Openbox desktop<br>
+    Artwork and this guide are licensed CC BY-SA 4.0. Ember is free software; you are free to
+    change it, rebuild it and share it.
+  </footer>
+</div>
+<script>
+  function flash(button) {
+    button.textContent = 'Copied';
+    setTimeout(function () { button.textContent = 'Copy'; }, 1400);
+  }
+  document.querySelectorAll('.copy').forEach(function (button) {
+    button.addEventListener('click', function () {
+      var text = button.getAttribute('data-copy');
+      if (navigator.clipboard && window.isSecureContext) {
+        navigator.clipboard.writeText(text).then(function () { flash(button); })
+          .catch(function () { legacyCopy(text, button); });
+      } else {
+        legacyCopy(text, button);
+      }
+    });
+  });
+  function legacyCopy(text, button) {
+    var area = document.createElement('textarea');
+    area.value = text;
+    area.setAttribute('readonly', '');
+    area.style.position = 'fixed';
+    area.style.opacity = '0';
+    document.body.appendChild(area);
+    area.select();
+    try { document.execCommand('copy'); flash(button); } catch (e) {}
+    document.body.removeChild(area);
+  }
+</script>
+</body>
+</html>
