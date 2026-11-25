@@ -1,0 +1,33 @@
+{
+  "name": "Ember",
+  "version": "1.0",
+  "colors": {
+    "ink":        { "hex": "#14171C", "role": "primary background, window base" },
+    "basalt":     { "hex": "#1B2027", "role": "panels, raised surfaces" },
+    "graphite":   { "hex": "#262C36", "role": "borders, inactive controls" },
+    "ash":        { "hex": "#A6AEBB", "role": "secondary text" },
+    "frost":      { "hex": "#F4F6F8", "role": "primary text on dark" },
+    "ember":      { "hex": "#F26A3D", "role": "primary accent, selection, focus" },
+    "ember_deep": { "hex": "#D8432A", "role": "pressed accent, gradients" },
+    "amber":      { "hex": "#FFB35C", "role": "highlight, secondary accent" },
+    "sand":       { "hex": "#FFD9A0", "role": "warm highlight, logo core" },
+    "teal":       { "hex": "#3FA796", "role": "cool counterpoint, links, success-adjacent" },
+    "success":    { "hex": "#4CAF6E", "role": "success states" },
+    "warning":    { "hex": "#E0A526", "role": "warning states" },
+    "danger":     { "hex": "#E5484D", "role": "errors, destructive actions" }
+  },
+  "contrast": {
+    "frost_on_ink": "15.8:1",
+    "ash_on_ink": "7.4:1",
+    "ink_on_ember": "6.1:1",
+    "ember_on_ink": "6.1:1"
+  },
+  "usage": {
+    "accent": "#F26A3D",
+    "accent_hover": "#FF8055",
+    "accent_pressed": "#D8432A",
+    "focus_ring": "#FFB35C",
+    "selection_bg": "#F26A3D",
+    "selection_fg": "#14171C"
+  }
+}

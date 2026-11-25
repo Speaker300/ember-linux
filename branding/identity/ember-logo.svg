@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512" role="img" aria-label="Ember Linux logo">
+  <title>Ember Linux logo</title>
+  <defs>
+    <linearGradient id="flameLeft" x1="170" y1="90" x2="270" y2="450" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#FFE1B4"/>
+      <stop offset="0.32" stop-color="#FFB35C"/>
+      <stop offset="0.72" stop-color="#F26A3D"/>
+      <stop offset="1" stop-color="#E2502D"/>
+    </linearGradient>
+    <linearGradient id="flameRight" x1="342" y1="120" x2="240" y2="460" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#FF9A62"/>
+      <stop offset="0.38" stop-color="#F26A3D"/>
+      <stop offset="0.78" stop-color="#D8432A"/>
+      <stop offset="1" stop-color="#A92E1E"/>
+    </linearGradient>
+    <linearGradient id="spark" x1="140" y1="160" x2="170" y2="200" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#FFD9A0"/>
+      <stop offset="1" stop-color="#FFB35C"/>
+    </linearGradient>
+    <linearGradient id="badgeBg" x1="80" y1="40" x2="430" y2="480" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#222831"/>
+      <stop offset="0.55" stop-color="#1B2027"/>
+      <stop offset="1" stop-color="#0F1216"/>
+    </linearGradient>
+    <filter id="softGlow" x="-60%" y="-60%" width="220%" height="220%">
+      <feGaussianBlur stdDeviation="24"/>
+    </filter>
+    <radialGradient id="markGlow" cx="256" cy="330" r="205" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#F26A3D" stop-opacity="0.20"/>
+      <stop offset="1" stop-color="#F26A3D" stop-opacity="0"/>
+    </radialGradient>
+    <clipPath id="leftHalf"><rect x="0" y="0" width="256" height="512"/></clipPath>
+    <clipPath id="rightHalf"><rect x="256" y="0" width="256" height="512"/></clipPath>
+  </defs>
+  <rect x="16" y="16" width="480" height="480" rx="108" fill="url(#badgeBg)"/>
+  <rect x="16.75" y="16.75" width="478.5" height="478.5" rx="107.25" fill="none" stroke="#39414D" stroke-opacity="0.65" stroke-width="1.5"/>
+  <path d="M256 36 C274 132 306 214 340 272 C368 320 356 388 314 426 C292 446 268 456 256 458 C238 454 214 440 196 418 C166 382 162 326 186 282 C214 232 238 152 256 36 Z" transform="translate(64 54) scale(0.75)" fill="#F26A3D" opacity="0.22" filter="url(#softGlow)"/>
+  <g transform="translate(56 42) scale(0.78)">
+
+  <g id="ember-mark">
+    
+    <path d="M256 36 C274 132 306 214 340 272 C368 320 356 388 314 426 C292 446 268 456 256 458 C238 454 214 440 196 418 C166 382 162 326 186 282 C214 232 238 152 256 36 Z" fill="url(#flameLeft)" clip-path="url(#leftHalf)"/>
+    <path d="M256 36 C274 132 306 214 340 272 C368 320 356 388 314 426 C292 446 268 456 256 458 C238 454 214 440 196 418 C166 382 162 326 186 282 C214 232 238 152 256 36 Z" fill="url(#flameRight)" clip-path="url(#rightHalf)"/>
+    <path d="M256 44 C248 166 246 324 258 450" fill="none" stroke="#14171C" stroke-opacity="0.24" stroke-width="7" stroke-linecap="round"/>
+    <path d="M256 38 C238 152 214 232 186 282 C162 326 166 382 196 418 C214 440 238 454 256 458" fill="none" stroke="#FFE7C4" stroke-opacity="0.30" stroke-width="4" stroke-linecap="round"/>
+    <path d="M296 292 C300 354 286 404 262 436" fill="none" stroke="#FFD9A0" stroke-opacity="0.22" stroke-width="3" stroke-linecap="round"/>
+    <path d="M264 186 C250 238 246 294 252 344" fill="none" stroke="#FFD9A0" stroke-opacity="0.50" stroke-width="3" stroke-linecap="round"/>
+    <circle cx="156" cy="206" r="11" fill="url(#spark)"/>
+    <circle cx="372" cy="162" r="7" fill="#FFB35C"/>
+    <circle cx="398" cy="238" r="4" fill="#FFD9A0" opacity="0.9"/>
+    <circle cx="126" cy="302" r="3.5" fill="#F26A3D" opacity="0.85"/>
+  </g>
+  </g>
+  <path d="M156 92 C 220 54 310 58 366 104" fill="none" stroke="#F4F6F8" stroke-opacity="0.07" stroke-width="2"/>
+</svg>
