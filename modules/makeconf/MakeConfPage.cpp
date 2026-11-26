@@ -7,6 +7,7 @@
 #include "JobQueue.h"
 
 #include <QCheckBox>
+#include <QComboBox>
 #include <QFile>
 #include <QFontDatabase>
 #include <QFormLayout>
@@ -139,6 +140,10 @@ videoCards()
     {
         return QStringLiteral( "vmware" );
     }
+    if ( all.contains( QStringLiteral( "qxl" ) ) )
+    {
+        return QStringLiteral( "qxl" );
+    }
     if ( all.contains( QStringLiteral( "virtio" ) ) || all.contains( QStringLiteral( "red hat" ) ) )
     {
         return QStringLiteral( "virgl" );
@@ -193,10 +198,36 @@ localeName()
     return lang;
 }
 
+qint64
+memTotalKiB()
+{
+    QFile f( QStringLiteral( "/proc/meminfo" ) );
+    if ( !f.open( QIODevice::ReadOnly ) )
+    {
+        return 0;
+    }
+    const QString all = QString::fromLocal8Bit( f.readAll() );
+    QRegularExpression re( QStringLiteral( "^MemTotal:\\s+(\\d+)\\s+kB" ),
+                           QRegularExpression::MultilineOption );
+    auto m = re.match( all );
+    return m.hasMatch() ? m.captured( 1 ).toLongLong() : 0;
+}
+
 bool
 isEfi()
 {
     return QFile::exists( QStringLiteral( "/sys/firmware/efi" ) );
+}
+
+bool
+isSystemdStage()
+{
+    if ( auto* gs = Calamares::JobQueue::instance()->globalStorage() )
+    {
+        const QString stage = gs->value( QStringLiteral( "STAGE_NAME_TAR" ) ).toString().toLower();
+        return stage.contains( QStringLiteral( "systemd" ) );
+    }
+    return false;
 }
 }  // namespace
 
@@ -220,7 +251,7 @@ MakeConfPage::MakeConfPage( QWidget* parent )
     m_editor = new QPlainTextEdit( this );
     m_editor->setFont( QFontDatabase::systemFont( QFontDatabase::FixedFont ) );
     m_editor->setLineWrapMode( QPlainTextEdit::NoWrap );
-    m_editor->setMinimumHeight( 300 );
+    m_editor->setMinimumHeight( 220 );
     layout->addWidget( m_editor, 1 );
 
     auto* buttons = new QHBoxLayout();
@@ -238,6 +269,41 @@ MakeConfPage::MakeConfPage( QWidget* parent )
     m_world = new QCheckBox( tr( "Update @world after installation (slower, but keeps the system current)" ), this );
     m_world->setChecked( false );
     layout->addWidget( m_world );
+
+    m_secureboot = new QCheckBox(
+        tr( "Enable Secure Boot support (UEFI: installs shim, signed GRUB and a source-built signed kernel)" ), this );
+    m_secureboot->setChecked( false );
+    m_secureboot->setVisible( isEfi() );
+    m_secureboot->setToolTip(
+        tr( "The first boot will ask you to enroll the Ember Secure Boot key in the MOK manager." ) );
+    layout->addWidget( m_secureboot );
+
+    m_sourceKernel = new QCheckBox(
+        tr( "Build the kernel from source and sign it (slower; only needed for custom drivers)" ), this );
+    m_sourceKernel->setChecked( false );
+    m_sourceKernel->setVisible( isEfi() );
+    m_sourceKernel->setEnabled( isEfi() && m_secureboot->isChecked() );
+    layout->addWidget( m_sourceKernel );
+    connect( m_secureboot, &QCheckBox::toggled, this, [this]( bool on ) {
+        m_sourceKernel->setEnabled( on );
+    } );
+
+    auto* bootRow = new QHBoxLayout();
+    bootRow->addWidget( new QLabel( tr( "Bootloader:" ), this ) );
+    m_bootloader = new QComboBox( this );
+    m_bootloader->addItem( tr( "GRUB (BIOS and UEFI)" ), QStringLiteral( "grub" ) );
+    m_bootloader->addItem( tr( "systemd-boot (UEFI, systemd stage3)" ), QStringLiteral( "systemd-boot" ) );
+    m_bootloader->addItem( tr( "EFI stub (not yet supported)" ), QStringLiteral( "efi-stub" ) );
+    m_bootloader->setItemData( 2, false, Qt::UserRole - 1 );
+    if ( !isEfi() || !isSystemdStage() )
+    {
+        m_bootloader->setItemData( 1, false, Qt::UserRole - 1 );
+    }
+    m_bootloader->setToolTip(
+        tr( "systemd-boot requires a systemd stage3 and UEFI.  EFI stub is not implemented yet." ) );
+    bootRow->addWidget( m_bootloader );
+    bootRow->addStretch();
+    layout->addLayout( bootRow );
 
     m_status = new QLabel( this );
     m_status->setWordWrap( true );
@@ -258,7 +324,12 @@ MakeConfPage::MakeConfPage( QWidget* parent )
 QString
 MakeConfPage::buildSuggestion() const
 {
-    const int jobs = std::max( 1, QThread::idealThreadCount() );
+    const int cpu_jobs = std::max( 1, QThread::idealThreadCount() );
+    const qint64 mem_kib = memTotalKiB();
+    const int mem_gib = mem_kib > 0 ? std::max( 1, int( mem_kib / ( 1024 * 1024 ) ) ) : 4;
+    const int mem_jobs = std::max( 1, mem_gib / 2 );
+    const int jobs = std::min( cpu_jobs, mem_jobs );
+    const int pkg_jobs = std::max( 1, std::min( 4, jobs / 4 ) );
     const QString desktop = desktopChoice();
     const QString flags = cpuFlags();
     const bool server = desktop == QStringLiteral( "server" );
@@ -280,6 +351,8 @@ MakeConfPage::buildSuggestion() const
     QString text;
     text += QStringLiteral( "# Ember Linux build configuration\n" );
     text += QStringLiteral( "# Suggested for this machine (%1)\n" ).arg( cpuDescription() );
+    text += QStringLiteral( "# CPU threads: %1, RAM: %2 GiB -> MAKEOPTS -j%3 (memory-capped)\n" )
+                .arg( cpu_jobs ).arg( mem_gib ).arg( jobs );
     text += QStringLiteral( "# Desktop profile: %1\n\n" ).arg( desktop );
 
     text += QStringLiteral( "COMMON_FLAGS=\"-O2 -pipe -march=native -mtune=native\"\n" );
@@ -297,8 +370,8 @@ MakeConfPage::buildSuggestion() const
     text += QStringLiteral( "FEATURES=\"getbinpkg\"\n" );
     text += QStringLiteral( "BINPKG_COMPRESS=\"zstd\"\n" );
     text += QStringLiteral( "EMERGE_DEFAULT_OPTS=\"--getbinpkg --jobs=%1 --load-average=%2\"\n" )
-                .arg( std::min( jobs, 8 ) )
-                .arg( jobs * 2 );
+                .arg( pkg_jobs )
+                .arg( std::max( 2, jobs * 2 ) );
     text += QStringLiteral( "GRUB_PLATFORMS=\"efi-64 pc\"\n" );
     if ( !flags.isEmpty() )
     {
@@ -316,10 +389,34 @@ MakeConfPage::text() const
     return m_editor->toPlainText();
 }
 
+QString
+MakeConfPage::suggestedText() const
+{
+    return m_suggested;
+}
+
 bool
 MakeConfPage::worldUpdate() const
 {
     return m_world->isChecked();
+}
+
+bool
+MakeConfPage::secureBoot() const
+{
+    return m_secureboot->isChecked();
+}
+
+bool
+MakeConfPage::sourceKernel() const
+{
+    return m_sourceKernel && m_sourceKernel->isChecked();
+}
+
+QString
+MakeConfPage::bootloader() const
+{
+    return m_bootloader ? m_bootloader->currentData().toString() : QStringLiteral( "grub" );
 }
 
 bool
